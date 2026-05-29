@@ -1,0 +1,212 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+background-image: radial-gradient(circle,rgba(20, 3, 10, 1) 0%, rgba(77, 82, 87, 1) 100%);
+    color: #0f0101;
+    a{
+        color: rgb(232, 226, 226);
+        text-decoration: none;
+    }
+}
+.navbar{
+    position:absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 25px 9%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.navbar .logo{
+    font-size: 30px;
+    font-weight: 500; 
+}
+.navbar ul{
+    display: flex;
+    list-style:none;  
+}
+.navbar ul li{
+   margin: 35px; 
+}
+.navbar ul li a
+{
+    font-size: 20px;
+    font-weight: 300;
+    transition: .5s;
+}
+.navbar ul li a:hover{
+    color: rgb(113, 154, 154);
+    transition: .3s;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    padding: 300px 9% 0;
+    color: beige;
+    height: 100vh;
+}
+.home-info h1{
+    font-size: 40px;    
+}
+.home-info h1 span{
+    font-size: 50px;
+    color: rgb(173, 100, 100);
+}
+.home-info h2{
+    font-size: 25px;
+    margin: 10px;
+}
+.home-info p{
+    font-size: 15px;
+}
+.img1{
+    width: 400px;
+    margin-top: -90px;
+    margin-left: 120px;
+    transition: 1s;
+}
+.img1:hover{
+    width: 410px;
+}
+.follow{
+margin-right: 00px;
+}
+.follow a{
+    font-size: 30px;
+}
+.follow a:hover{
+    color: aquamarine;
+}
+
+.heropage{
+    display: flex;
+}
+
+#about{
+    min-height: 100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px;
+    background-color:aliceblue ;
+}
+#about-content{
+    max-width: 600px;
+    color: rgb(13, 12, 12);
+}
+#about h1{
+    text-align: center;
+    margin-top: 70px;
+    color:rgb(17, 5, 5);
+    font-size: 40px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500px;
+}
+#main{
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    padding:100px;
+}
+#datails{
+    display: flex;
+    justify-content: space-between;
+}
+#page2{
+height: 500px;
+border-radius: 10%;
+}
+#contact-page{
+    background-image: radial-gradient(circle,rgba(20, 3, 10, 1) 0%, rgba(77, 82, 87, 1) 100%);
+      color:rgb(250, 248, 248);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+}
+ 
+
+.contact-section{
+      width:100%;
+      max-width:800px;
+      text-align:center;
+      padding:40px 20px;
+      
+    }
+
+    .contact-section h1{
+      font-size:60px;
+      margin-bottom:15px;
+    }
+
+    .contact-section p{
+      color:#c7c7c7;
+      margin-bottom:50px;
+      font-size:20px;
+    }
+
+    form{
+      width:100%;
+    }
+
+    .input-box{
+      width:100%;
+      margin-bottom:25px;
+    }
+
+    .input-box input,
+    .input-box textarea{
+      width:100%;
+      padding:18px;
+      border:1px solid #5f7485;
+      background:#bc5b5b;
+      color:white;
+      border-radius:6px;
+      font-size:18px;
+      outline:none;
+    }
+
+    .input-box input::placeholder,
+    .input-box textarea::placeholder{
+      color:#d0d0d0;
+    }
+
+    .input-box textarea{
+      height:180px;
+      resize:none;
+    }
+
+    .btn{
+      background:#b75f5d;
+      color:white;
+      border:none;
+      padding:16px 40px;
+      font-size:22px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:#5c5e5f;
+    }
+
+    hr{
+      margin:50px 0 20px;
+      border:0;
+      border-top:1px solid #5f7485;
+    }
+
+    footer{
+      color:#d0d0d0;
+      font-size:18px;
+    }
