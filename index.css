@@ -126,8 +126,8 @@ height: 500px;
 border-radius: 10%;
 }
 #contact-page{
-    background-image: radial-gradient(circle,rgba(20, 3, 10, 1) 0%, rgba(77, 82, 87, 1) 100%);
-      color:rgb(250, 248, 248);
+    background-color:aliceblue ;
+      color:rgb(173, 106, 106);
       display:flex;
       justify-content:center;
       align-items:center;
@@ -149,7 +149,7 @@ border-radius: 10%;
     }
 
     .contact-section p{
-      color:#c7c7c7;
+      color:#181111;
       margin-bottom:50px;
       font-size:20px;
     }
@@ -167,9 +167,9 @@ border-radius: 10%;
     .input-box textarea{
       width:100%;
       padding:18px;
-      border:1px solid #5f7485;
-      background:#bc5b5b;
-      color:white;
+      border:1px solid #070808;
+      background-color: rgb(173, 100, 100);
+      color:rgb(19, 13, 20);
       border-radius:6px;
       font-size:18px;
       outline:none;
@@ -177,7 +177,7 @@ border-radius: 10%;
 
     .input-box input::placeholder,
     .input-box textarea::placeholder{
-      color:#d0d0d0;
+      color:#452c2c;
     }
 
     .input-box textarea{
@@ -186,8 +186,8 @@ border-radius: 10%;
     }
 
     .btn{
-      background:#b75f5d;
-      color:white;
+      background:rgb(185, 115, 115);
+      color:rgb(61, 54, 54);
       border:none;
       padding:16px 40px;
       font-size:22px;
@@ -197,17 +197,17 @@ border-radius: 10%;
     }
 
     .btn:hover{
-      background:#5c5e5f;
+      background:#b55c5c;
     }
 
     hr{
       margin:50px 0 20px;
       border:0;
-      border-top:1px solid #5f7485;
+      border-top:1px solid #0a0f13;
     }
 
     footer{
-      color:#d0d0d0;
+      color:#252020;
       font-size:18px;
     }
     @media (max-width: 1024px) {
@@ -422,4 +422,98 @@ border-radius: 10%;
         font-size: 14px;
     }
 }
+    .skill1{
+    background-image: radial-gradient(circle,rgba(20, 3, 10, 1) 0%, rgba(77, 82, 87, 1) 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.skills-section{
+    background:#fff;
+    width:800px;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.skills-section h1{
+    text-align:center;
+    margin-bottom:10px;
+    color:#333;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.skill-card{
+    margin-bottom:25px;
+}
+
+.skill-card h2{
+    margin-bottom:10px;
+    color:#444;
+}
+
+.progress-bar{
+    width:100%;
+    height:25px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    text-align:center;
+    line-height:25px;
+    color:white;
+    font-weight:bold;
+}
+
+.html{
+    width:90%;
+    background:#ce6868;
+}
+
+.css{
+    width:85%;
+     background:#ce6868;
+}
+
+.js{
+    width:70%;
+    background:#ce6868;
+}
+
+.soft-skills{
+    margin-top:40px;
     
+}
+
+.soft-skills h2{
+    margin-bottom:15px;
+    color:#3c3b3b;
+}
+
+.soft-skills ul{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    list-style:none;
+}
+
+.soft-skills li{
+     background:#ce6868;
+    color:white;
+    padding:12px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:bold;
+}
+

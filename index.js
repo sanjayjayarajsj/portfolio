@@ -26,4 +26,4 @@ function sendMail(event) {
             console.error("EmailJS error:", err);
             alert("Failed to send message. Error: " + JSON.stringify(err));
         });
-}
+    }
