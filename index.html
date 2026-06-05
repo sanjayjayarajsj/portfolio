@@ -6,16 +6,25 @@
     <title>profile</title> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="index.css">
-
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="index.js" defer></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "7h2wgg4kQPqH3Dofc",
+      });
+   })();
+</script>
 </head>
 <body>
+</script>
     <nav class="navbar">
         <a href="#" class="logo">PORTFOLIO</a>  
         <ul>             
      <li><a href="#home-info">HOME</a></li>
      <li><a href="#about">ABOUT</a></li>
     <li><a href="#contact-page">CONTACT</a></li>
-    <li><a href="#media">MEDIA</a></li>
+    <li><a href="#skill">SKILL</a></li>
     </ul>
             </nav>
             <section class="home">
@@ -78,22 +87,19 @@
     <form>
 
       <div class="input-box">
-        <input type="text" placeholder="Your Name">
+        <input type="text" id="txt11" placeholder="Your Name">
       </div>
 
       <div class="input-box">
-        <input type="email" placeholder="Your Email">
+        <input type="email" id="email11" placeholder="Your Email">
       </div>
+
 
       <div class="input-box">
-        <input type="text" placeholder="Subject">
+        <textarea id="box11" placeholder="Your Message"></textarea>
       </div>
 
-      <div class="input-box">
-        <textarea placeholder="Your Message"></textarea>
-      </div>
-
-      <button class="btn">Send Message</button><br><br>
+      <button class="btn" onclick="sendMail(event)">Send Message</button><br><br>
 
     </form>
 
