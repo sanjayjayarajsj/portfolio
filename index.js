@@ -1,3 +1,4 @@
+
 function sendMail(event) {
     event.preventDefault();
 
@@ -8,10 +9,10 @@ function sendMail(event) {
     if (!name || !email || !message) {
         alert("Please fill in all fields.");
         return;
-
-       var params = { name, email, message }; 
     }
-    
+    window.sendMail = sendMail;
+     var params = { name, email, message }; 
+     
     const serviceID = "service_j79fre3";
     const templateID = "template_sl4h8y7";
 
@@ -22,6 +23,7 @@ function sendMail(event) {
             document.getElementById("box11").value = "";
             alert("Your message sent successfully!");
         })
+        
         .catch(err => {
             console.error("EmailJS error:", err);
             alert("Failed to send message. Error: " + JSON.stringify(err));

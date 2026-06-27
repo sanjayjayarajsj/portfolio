@@ -1,167 +1,283 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>profile</title> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sanjay Jayaraj — Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="index.css">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="index.js" defer></script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "7h2wgg4kQPqH3Dofc",
-      });
-   })();
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){ emailjs.init({ publicKey: "7h2wgg4kQPqH3Dofc" }); })();
+    </script>
 </head>
 <body>
-</script>
-    <nav class="navbar">
-        <a href="#" class="logo">PORTFOLIO</a>  
-        <ul>             
-     <li><a href="#home-info">HOME</a></li>
-     <li><a href="#about">ABOUT</a></li>
-    <li><a href="#contact-page">CONTACT</a></li>
-    <li><a href="#skill1">SKILL</a></li>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+    <a href="#home" class="logo">SJ<span class="logo-dot">.</span></a>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skill1">Skills</a></li>
+        <li><a href="#contact-page">Contact</a></li>
     </ul>
-            </nav>
-            <section class="home">
-                <div class="heropage">
-                    <div class="home-info">
-                        <h2>Hey I'm <h1><span>Sanjay Jayaraj</span></h1></h2>
-                        <h2>Software developer</h2>
-                        <p>Lorem ipsum dolor,sit amet consectetur adipisicing elit.<br> Quod ducimus unde dignissimos, quia officia ipsum commodi? Eveniet, sed est illo exceptur sed.</p>
-                    </div> 
-                    <div>
-                        <img class="img1" src="pic.PNG">
+    <div class="nav-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <span class="toggle-track">
+                <span class="toggle-icon sun"><i class="fa-solid fa-sun"></i></span>
+                <span class="toggle-icon moon"><i class="fa-solid fa-moon"></i></span>
+                <span class="toggle-thumb"></span>
+            </span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ===== HOME ===== -->
+<section id="home">
+    <div class="hero-container">
+        <div class="hero-text">
+            <p class="hero-greeting">Hello, I'm</p>
+            <h1 class="hero-name">Sanjay<br><span>Jayaraj</span></h1>
+            <h2 class="hero-role">Full Stack Developer</h2>
+            <p class="hero-desc">Building clean, responsive, and user-friendly web experiences with React & Python/Django.</p>
+            <div class="hero-btns">
+                <a href="#contact-page" class="btn-primary">Hire Me</a>
+                <a href="#about" class="btn-outline">About Me</a>
+            </div>
+            <div class="hero-social">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="http://instagram.com/sanjay_jayaraj_" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="hero-image-wrap">
+            <div class="hero-image-ring"></div>
+            <img class="hero-img" src="pic.PNG" alt="Sanjay Jayaraj">
+        </div>
+    </div>
+    <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+    <div class="section-header">
+        <p class="section-tag">Who I am</p>
+        <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+        <div class="about-img-col">
+            <div class="about-img-frame">
+                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDFoMjBzODRhYTFiNGk5YjV3YXczYWU0dGtnZms3ZHE4Y3hidXE5NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZr27ZbJwmjE9PGyLN/giphy.gif" alt="Sanjay coding">
+            </div>
+        </div>
+        <div class="about-content-col">
+            <h3 class="about-name">Hey! I'm <span>Sanjay Jayaraj</span></h3>
+            <p class="about-bio">I'm a full stack developer focused on React and Python/Django, building clean, responsive, and user-friendly websites that make a real impact.</p>
+            <p class="about-bio">When I'm not coding, I enjoy reading tech blogs, playing video games, and exploring new technologies. I believe in writing clean, efficient code and creating great user experiences.</p>
+            <div class="about-details">
+                <div class="detail-item">
+                    <span class="detail-label">Age</span>
+                    <span class="detail-value">20 years</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Location</span>
+                    <span class="detail-value">Kerala, India</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value">sanjayjayaraj481@gmail.com</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Phone</span>
+                    <span class="detail-value">+91 8075083859</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Freelance</span>
+                    <span class="detail-value available">Available ✓</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Languages</span>
+                    <span class="detail-value">English, Malayalam</span>
+                </div>
+            </div>
+            <a href="#contact-page" class="btn-primary">Let's Connect</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<div id="skill1">
+    <div class="particles" id="particles"></div>
+    <section class="skills-inner">
+        <div class="section-header light">
+            <p class="section-tag">What I know</p>
+            <h2 class="section-title">My Skills</h2>
+        </div>
+        <div class="radial-wrap">
+            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="90"/></svg><span class="ring-pct">90%</span></div><div class="ring-label">HTML5</div></div>
+            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="85"/></svg><span class="ring-pct">85%</span></div><div class="ring-label">CSS3</div></div>
+            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="70"/></svg><span class="ring-pct">70%</span></div><div class="ring-label">JavaScript</div></div>
+            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="75"/></svg><span class="ring-pct">75%</span></div><div class="ring-label">React</div></div>
+            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="65"/></svg><span class="ring-pct">65%</span></div><div class="ring-label">Python</div></div>
+            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="60"/></svg><span class="ring-pct">60%</span></div><div class="ring-label">Django</div></div>
+        </div>
+        <div class="tech-grid">
+            <div class="skill-card"><span class="skill-emoji">🌐</span><div class="skill-header"><span class="skill-name">HTML5</span><span class="skill-badge">90%</span></div><div class="bar-bg"><div class="bar-fill" data-w="90"></div></div></div>
+            <div class="skill-card"><span class="skill-emoji">🎨</span><div class="skill-header"><span class="skill-name">CSS3</span><span class="skill-badge">85%</span></div><div class="bar-bg"><div class="bar-fill" data-w="85"></div></div></div>
+            <div class="skill-card"><span class="skill-emoji">⚡</span><div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-badge">70%</span></div><div class="bar-bg"><div class="bar-fill" data-w="70"></div></div></div>
+            <div class="skill-card"><span class="skill-emoji">⚛️</span><div class="skill-header"><span class="skill-name">React</span><span class="skill-badge">75%</span></div><div class="bar-bg"><div class="bar-fill" data-w="75"></div></div></div>
+            <div class="skill-card"><span class="skill-emoji">🐍</span><div class="skill-header"><span class="skill-name">Python</span><span class="skill-badge">65%</span></div><div class="bar-bg"><div class="bar-fill" data-w="65"></div></div></div>
+            <div class="skill-card"><span class="skill-emoji">🔧</span><div class="skill-header"><span class="skill-name">Django</span><span class="skill-badge">60%</span></div><div class="bar-bg"><div class="bar-fill" data-w="60"></div></div></div>
+        </div>
+        <h3 class="soft-title">Soft Skills</h3>
+        <div class="soft-grid">
+            <div class="soft-card"><span class="soft-icon">🗣️</span><span class="soft-label">Communication</span></div>
+            <div class="soft-card"><span class="soft-icon">🤝</span><span class="soft-label">Teamwork</span></div>
+            <div class="soft-card"><span class="soft-icon">🧩</span><span class="soft-label">Problem Solving</span></div>
+            <div class="soft-card"><span class="soft-icon">⏰</span><span class="soft-label">Time Management</span></div>
+            <div class="soft-card"><span class="soft-icon">🔄</span><span class="soft-label">Adaptability</span></div>
+            <div class="soft-card"><span class="soft-icon">⚡</span><span class="soft-label">Quick Learning</span></div>
+        </div>
+    </section>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact-page">
+    <div class="section-header">
+        <p class="section-tag">Get in touch</p>
+        <h2 class="section-title">Contact Me</h2>
+        <p class="section-sub">Let's work together on your next project</p>
+    </div>
+    <div class="contact-grid">
+        <div class="contact-info">
+            <div class="contact-info-card">
+                <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div><p class="ci-label">Email</p><p class="ci-value">sanjayjayaraj481@gmail.com</p></div>
+            </div>
+            <div class="contact-info-card">
+                <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+                <div><p class="ci-label">Phone</p><p class="ci-value">+91 8075083859</p></div>
+            </div>
+            <div class="contact-info-card">
+                <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div><p class="ci-label">Location</p><p class="ci-value">Kerala, India</p></div>
+            </div>
+            <div class="contact-socials">
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="http://instagram.com/sanjay_jayaraj_" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="contact-form-wrap">
+<form id="contactForm">                <div class="form-row">
+                    <div class="form-group">
+                        <label for="txt11">Your Name</label>
+                        <input type="text" id="txt11" placeholder="Sanjay Jayaraj" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email11">Your Email</label>
+                        <input type="email" id="email11" placeholder="sanjay@email.com" required>
                     </div>
                 </div>
-                <div class="follow"><h3>Follow Me:</h3>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-square-linkedin"></i>
-                  <a href="http://instagram.com/sanjay_jayaraj_" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-instagram"></i></a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-square-x-twitter"></i></a>
-                    <a href="http://" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-       <div>     
-            </section>  
-<!-- -------------about-------------- -->
-            <section id="about">
-
-            <h1>About Me<br>--------------------</h1>
-            
-            <div id="main">
-      <div id="about-image">
-        <img id="page2" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDFoMjBzODRhYTFiNGk5YjV3YXczYWU0dGtnZms3ZHE4Y3hidXE5NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZr27ZbJwmjE9PGyLN/giphy.gif" alt="sanjay" width="350px">
-      </div>
-      <div id="about-content">
-       <h2><span style="font-size: 35px;">Hey! I'm</span> <span style="color:rgb(146, 54, 54) ; font-size:35px;">Sanjay Jayaraj</span></h2><br><br>
-       <p>I'm a full stack developer focused on React and Python/Django.Focused on building clean,responsive,and user-friendly websites</p><br>
-       <p>When I'm not coding, I enjoy reading tech blogs, playing video games, and exploring new technologies. I believe in writing clean, efficient code and creating user-friendly experiences.</p><br><br>
-       <div id="datails">
-       <p id="details1">
-        <span>Age :</span> <span>20years<br>-----------------------</span><br><br>
-        <span>Location :</span> <span>Kerala<br>---------------------------</span><br><br>
-        <span>Email :</span> <span>sanjayjayaraj481@gmil.com<br>-------------------------------------------------------</span><br><br>
-       </p>
-       <p id="details12">
-        <span>Phone :</span> <span>8075083859<br>-------------------------------</span><br><br>
-        <span>Freelance :</span> <span>Available<br>--------------------------------</span><br><br>
-        <span>Languages :</span> <span>English,Malayalam<br>--------------------------------------------------</span>
-       </p>
-       </div>
-      </div>
-      </div>
-    </section>
-
-<div class="skill1">
-     <section class="skills-section">
-        <h1>My Skills</h1>
-        <p class="subtitle">
-            Technologies and professional skills I am currently developing.
-        </p>
-
-        <div class="skills-container">
-
-            <div class="skill-card">
-                <h2>HTML</h2>
-                <div class="progress-bar">
-                    <div class="progress html">90%</div>
+                <div class="form-group">
+                    <label for="box11">Your Message</label>
+                    <textarea id="box11" placeholder="Let's build something amazing together..." required></textarea>
                 </div>
-            </div>
-
-            <div class="skill-card">
-                <h2>CSS</h2>
-                <div class="progress-bar">
-                    <div class="progress css">85%</div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h2>JavaScript</h2>
-                <div class="progress-bar">
-                    <div class="progress js">70%</div>
-                </div>
-            </div>
-
+                <button type="submit" class="btn-primary full-width">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
+    </div>
+</section>
 
-        <div class="soft-skills">
-            <h2>Soft Skills</h2>
-            <ul>
-                <li>Communication</li>
-                <li>Teamwork</li>
-                <li>Problem Solving</li>
-                <li>Time Management</li>
-                <li>Adaptability</li>
-                <li>Quick Learning</li>
-            </ul>
-        </div>
-    </section>
-     </div>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <p>© 2026 <span>Sanjay Jayaraj</span>. All rights reserved.</p>
+</footer>
 
+<!-- ===== SCRIPTS ===== -->
+<script>
+/* ---- Theme Toggle ---- */
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
 
+const saved = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', saved);
 
+themeBtn.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+});
 
+/* ---- Navbar scroll ---- */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-    <!-- -------------contact----------- -->
-     <div id="contact-page">
+/* ---- Hamburger ---- */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('active');
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+    });
+});
 
-  <section class="contact-section">
+/* ---- Particles ---- */
+const pContainer = document.getElementById('particles');
+for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `left:${Math.random()*100}%;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*8}s;width:${2+Math.random()*3}px;height:${2+Math.random()*3}px;`;
+    pContainer.appendChild(p);
+}
 
-    <h1>Contact Me</h1>
-    <p>Let's work together on your next project</p>
+/* ---- Skills animation ---- */
+const CIRC = 2 * Math.PI * 38;
+let animated = false;
+function triggerSkills() {
+    if (animated) return;
+    animated = true;
+    document.querySelectorAll('.ring-fill').forEach(r => {
+        const pct = parseInt(r.dataset.pct);
+        r.style.strokeDasharray = CIRC;
+        r.style.strokeDashoffset = CIRC;
+        setTimeout(() => { r.style.strokeDashoffset = CIRC - (CIRC * pct / 100); }, 300);
+    });
+    document.querySelectorAll('.bar-fill').forEach(b => {
+        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 500);
+    });
+}
 
-    <form>
+/* ---- Reveal on scroll ---- */
+const revealEls = document.querySelectorAll('.skill-card, .radial-card, .soft-card, .about-img-frame, .about-content-col, .contact-info-card, .contact-form-wrap');
+const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObs.observe(el));
 
-      <div class="input-box">
-        <input type="text" id="txt11" placeholder="Your Name">
-      </div>
-
-      <div class="input-box">
-        <input type="email" id="email11" placeholder="Your Email">
-      </div>
-
-
-      <div class="input-box">
-        <textarea id="box11" placeholder="Your Message"></textarea>
-      </div>
-
-      <button class="btn" onclick="sendMail(event)">Send Message</button><br><br>
-
-    </form>
-
-
-    <footer>
-      © 2026 Sanjay Jayaraj. All rights reserved.
-    </footer>
-  </section>
-     </div>
-
-
-
-    <!-- -------------skill-------------- -->
-     
+const skillObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { triggerSkills(); skillObs.disconnect(); }
+}, { threshold: 0.1 });
+skillObs.observe(document.getElementById('skill1'));
+</script>
+</body>
+</html>
