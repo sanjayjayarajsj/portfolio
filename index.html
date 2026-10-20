@@ -1,283 +1,233 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanjay Jayaraj — Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="index.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){ emailjs.init({ publicKey: "7h2wgg4kQPqH3Dofc" }); })();
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanjay Jayaraj — Full Stack Developer</title>
+<meta name="description" content="Sanjay Jayaraj is a full stack developer from Kerala building fast, responsive web apps with C#, ASP.NET Core, Angular, TypeScript, Azure and AWS.">
+<meta name="theme-color" content="#000000">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="index.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+<script src="index.js" defer></script>
 </head>
 <body>
+<div class="progress" id="progress"></div>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar" id="navbar">
-    <a href="#home" class="logo">SJ<span class="logo-dot">.</span></a>
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skill1">Skills</a></li>
-        <li><a href="#contact-page">Contact</a></li>
+<header class="navbar" id="navbar">
+  <a href="#home" class="logo" aria-label="Home">SJ<span>.</span></a>
+  <nav>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">What I do</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="nav-right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-            <span class="toggle-track">
-                <span class="toggle-icon sun"><i class="fa-solid fa-sun"></i></span>
-                <span class="toggle-icon moon"><i class="fa-solid fa-moon"></i></span>
-                <span class="toggle-thumb"></span>
-            </span>
-        </button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</nav>
+  </nav>
+  <div class="nav-right">
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme"><i class="fa-solid fa-moon"></i></button>
+    <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</header>
 
-<!-- ===== HOME ===== -->
-<section id="home">
-    <div class="hero-container">
-        <div class="hero-text">
-            <p class="hero-greeting">Hello, I'm</p>
-            <h1 class="hero-name">Sanjay<br><span>Jayaraj</span></h1>
-            <h2 class="hero-role">Full Stack Developer</h2>
-            <p class="hero-desc">Building clean, responsive, and user-friendly web experiences with React & Python/Django.</p>
-            <div class="hero-btns">
-                <a href="#contact-page" class="btn-primary">Hire Me</a>
-                <a href="#about" class="btn-outline">About Me</a>
-            </div>
-            <div class="hero-social">
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="http://instagram.com/sanjay_jayaraj_" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-        <div class="hero-image-wrap">
-            <div class="hero-image-ring"></div>
-            <img class="hero-img" src="pic.PNG" alt="Sanjay Jayaraj">
-        </div>
+<main>
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="status"><span class="dot"></span> Open to freelance and full-time roles</p>
+      <h1 class="hero-name"><span class="line">Sanjay</span><span class="line">Jayaraj</span></h1>
+      <p class="hero-role">Full stack .NET developer building scalable web apps and REST APIs with C#, ASP.NET Core, Clean Architecture and Angular, shipped through Azure, AWS and CI/CD.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">Hire me</a>
+        <button class="btn btn-ghost copy" data-copy="sanjayjayaraj481@gmail.com" type="button"><i class="fa-regular fa-copy"></i> Copy email</button>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/Sanjay Jayaraj" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://instagram.com/sanjay_jayaraj_" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/sanjayjayarajsj" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://wa.me/918075083859" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
     </div>
-    <div class="hero-scroll-hint">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
+    <div class="hero-photo">
+      <img src="pic.PNG" alt="Portrait of Sanjay Jayaraj" width="720" height="720" fetchpriority="high">
     </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>C#</span><span>ASP.NET Core</span><span>MVC</span><span>Microservices</span><span>Clean Architecture</span><span>SQL Server</span><span>EF Core</span><span>Dapper</span><span>REST APIs</span><span>Angular</span><span>TypeScript</span><span>Azure</span><span>AWS</span><span>CI/CD</span>
+      <span>C#</span><span>ASP.NET Core</span><span>MVC</span><span>Microservices</span><span>Clean Architecture</span><span>SQL Server</span><span>EF Core</span><span>Dapper</span><span>REST APIs</span><span>Angular</span><span>TypeScript</span><span>Azure</span><span>AWS</span><span>CI/CD</span>
+    </div>
+  </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section id="about">
-    <div class="section-header">
-        <p class="section-tag">Who I am</p>
-        <h2 class="section-title">About Me</h2>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>About me</h2>
+      <p>A developer from Kerala who cares about how things look, feel and perform.</p>
     </div>
     <div class="about-grid">
-        <div class="about-img-col">
-            <div class="about-img-frame">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDFoMjBzODRhYTFiNGk5YjV3YXczYWU0dGtnZms3ZHE4Y3hidXE5NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EZr27ZbJwmjE9PGyLN/giphy.gif" alt="Sanjay coding">
-            </div>
+      <div class="reveal">
+        <p class="lead">I'm a full stack developer. I build responsive, user-friendly web apps end to end: interfaces with HTML, CSS, JavaScript, TypeScript, Angular and Tailwind CSS, and back ends with C#, ASP.NET Core, MVC and microservices built on Clean Architecture, backed by SQL Server, EF Core and Dapper.</p>
+        <p>I also deploy and automate with Azure, AWS and CI/CD pipelines, so the work goes from commit to production reliably.</p>
+        <p>Outside of code I read tech blogs, play video games and try out new tools. I like clean, readable code and interfaces that people can use without thinking about them.</p>
+      </div>
+      <dl class="details reveal">
+        <div><dt>Location</dt><dd>Kerala, India</dd></div>
+        <div><dt>Languages</dt><dd>English, Malayalam</dd></div>
+        <div><dt>Freelance</dt><dd class="ok">Available</dd></div>
+        <div>
+          <dt>Email</dt>
+          <dd><button class="copy chip" data-copy="sanjayjayaraj481@gmail.com" type="button">sanjayjayaraj481@gmail.com <i class="fa-regular fa-copy"></i></button></dd>
         </div>
-        <div class="about-content-col">
-            <h3 class="about-name">Hey! I'm <span>Sanjay Jayaraj</span></h3>
-            <p class="about-bio">I'm a full stack developer focused on React and Python/Django, building clean, responsive, and user-friendly websites that make a real impact.</p>
-            <p class="about-bio">When I'm not coding, I enjoy reading tech blogs, playing video games, and exploring new technologies. I believe in writing clean, efficient code and creating great user experiences.</p>
-            <div class="about-details">
-                <div class="detail-item">
-                    <span class="detail-label">Age</span>
-                    <span class="detail-value">20 years</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Location</span>
-                    <span class="detail-value">Kerala, India</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Email</span>
-                    <span class="detail-value">sanjayjayaraj481@gmail.com</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Phone</span>
-                    <span class="detail-value">+91 8075083859</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Freelance</span>
-                    <span class="detail-value available">Available ✓</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Languages</span>
-                    <span class="detail-value">English, Malayalam</span>
-                </div>
-            </div>
-            <a href="#contact-page" class="btn-primary">Let's Connect</a>
+        <div>
+          <dt>Phone</dt>
+          <dd><button class="copy chip" data-copy="+91 8075083859" type="button">+91 8075083859 <i class="fa-regular fa-copy"></i></button></dd>
         </div>
+      </dl>
     </div>
+  </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
-<div id="skill1">
-    <div class="particles" id="particles"></div>
-    <section class="skills-inner">
-        <div class="section-header light">
-            <p class="section-tag">What I know</p>
-            <h2 class="section-title">My Skills</h2>
-        </div>
-        <div class="radial-wrap">
-            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="90"/></svg><span class="ring-pct">90%</span></div><div class="ring-label">HTML5</div></div>
-            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="85"/></svg><span class="ring-pct">85%</span></div><div class="ring-label">CSS3</div></div>
-            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="70"/></svg><span class="ring-pct">70%</span></div><div class="ring-label">JavaScript</div></div>
-            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="75"/></svg><span class="ring-pct">75%</span></div><div class="ring-label">React</div></div>
-            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="65"/></svg><span class="ring-pct">65%</span></div><div class="ring-label">Python</div></div>
-            <div class="radial-card"><div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 90 90"><circle class="ring-bg" cx="45" cy="45" r="38"/><circle class="ring-fill" cx="45" cy="45" r="38" data-pct="60"/></svg><span class="ring-pct">60%</span></div><div class="ring-label">Django</div></div>
-        </div>
-        <div class="tech-grid">
-            <div class="skill-card"><span class="skill-emoji">🌐</span><div class="skill-header"><span class="skill-name">HTML5</span><span class="skill-badge">90%</span></div><div class="bar-bg"><div class="bar-fill" data-w="90"></div></div></div>
-            <div class="skill-card"><span class="skill-emoji">🎨</span><div class="skill-header"><span class="skill-name">CSS3</span><span class="skill-badge">85%</span></div><div class="bar-bg"><div class="bar-fill" data-w="85"></div></div></div>
-            <div class="skill-card"><span class="skill-emoji">⚡</span><div class="skill-header"><span class="skill-name">JavaScript</span><span class="skill-badge">70%</span></div><div class="bar-bg"><div class="bar-fill" data-w="70"></div></div></div>
-            <div class="skill-card"><span class="skill-emoji">⚛️</span><div class="skill-header"><span class="skill-name">React</span><span class="skill-badge">75%</span></div><div class="bar-bg"><div class="bar-fill" data-w="75"></div></div></div>
-            <div class="skill-card"><span class="skill-emoji">🐍</span><div class="skill-header"><span class="skill-name">Python</span><span class="skill-badge">65%</span></div><div class="bar-bg"><div class="bar-fill" data-w="65"></div></div></div>
-            <div class="skill-card"><span class="skill-emoji">🔧</span><div class="skill-header"><span class="skill-name">Django</span><span class="skill-badge">60%</span></div><div class="bar-bg"><div class="bar-fill" data-w="60"></div></div></div>
-        </div>
-        <h3 class="soft-title">Soft Skills</h3>
-        <div class="soft-grid">
-            <div class="soft-card"><span class="soft-icon">🗣️</span><span class="soft-label">Communication</span></div>
-            <div class="soft-card"><span class="soft-icon">🤝</span><span class="soft-label">Teamwork</span></div>
-            <div class="soft-card"><span class="soft-icon">🧩</span><span class="soft-label">Problem Solving</span></div>
-            <div class="soft-card"><span class="soft-icon">⏰</span><span class="soft-label">Time Management</span></div>
-            <div class="soft-card"><span class="soft-icon">🔄</span><span class="soft-label">Adaptability</span></div>
-            <div class="soft-card"><span class="soft-icon">⚡</span><span class="soft-label">Quick Learning</span></div>
-        </div>
-    </section>
-</div>
+<!-- SKILLS -->
+<section id="skills" class="section alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Skills</h2>
+      <p>The tools I use day to day.</p>
+    </div>
+    <div class="skill-groups">
+      <article class="group reveal">
+        <h3><i class="fa-solid fa-server"></i> Back end</h3>
+        <ul class="tags">
+          <li><i class="fa-brands fa-microsoft"></i> C#</li>
+          <li><i class="fa-solid fa-globe"></i> ASP.NET Core</li>
+          <li><i class="fa-solid fa-table-columns"></i> MVC</li>
+          <li><i class="fa-solid fa-cubes"></i> Microservices</li>
+          <li><i class="fa-solid fa-sitemap"></i> Clean Architecture</li>
+          <li><i class="fa-solid fa-plug"></i> REST APIs</li>
+        </ul>
+      </article>
+      <article class="group reveal">
+        <h3><i class="fa-solid fa-database"></i> Data</h3>
+        <ul class="tags">
+          <li><i class="fa-solid fa-database"></i> SQL Server</li>
+          <li><i class="fa-solid fa-diagram-project"></i> EF Core</li>
+          <li><i class="fa-solid fa-bolt"></i> Dapper</li>
+        </ul>
+      </article>
+      <article class="group reveal">
+        <h3><i class="fa-solid fa-layer-group"></i> Front end</h3>
+        <ul class="tags">
+          <li><i class="fa-brands fa-angular"></i> Angular</li>
+          <li><i class="fa-solid fa-code"></i> TypeScript</li>
+          <li><i class="fa-brands fa-js"></i> JavaScript</li>
+          <li><i class="fa-solid fa-wind"></i> Tailwind CSS</li>
+          <li><i class="fa-brands fa-html5"></i> HTML5</li>
+          <li><i class="fa-brands fa-css3-alt"></i> CSS3</li>
+        </ul>
+      </article>
+      <article class="group reveal">
+        <h3><i class="fa-solid fa-cloud"></i> Cloud and DevOps</h3>
+        <ul class="tags">
+          <li><i class="fa-solid fa-cloud"></i> Azure</li>
+          <li><i class="fa-brands fa-aws"></i> AWS</li>
+          <li><i class="fa-solid fa-infinity"></i> CI/CD</li>
+        </ul>
+      </article>
+      <article class="group reveal">
+        <h3><i class="fa-solid fa-people-group"></i> Working style</h3>
+        <ul class="tags">
+          <li>Communication</li>
+          <li>Teamwork</li>
+          <li>Problem solving</li>
+          <li>Time management</li>
+          <li>Adaptability</li>
+          <li>Quick learning</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-<!-- ===== CONTACT ===== -->
-<section id="contact-page">
-    <div class="section-header">
-        <p class="section-tag">Get in touch</p>
-        <h2 class="section-title">Contact Me</h2>
-        <p class="section-sub">Let's work together on your next project</p>
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>What I do</h2>
+      <p>From database to deployment, the full path of a web product.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal"><span class="ci-icon"><i class="fa-solid fa-sitemap"></i></span><h3>Clean Architecture back ends</h3><p>ASP.NET Core and MVC applications split into clear layers, so they stay testable and easy to change.</p></article>
+      <article class="svc reveal"><span class="ci-icon"><i class="fa-solid fa-cubes"></i></span><h3>Microservices and REST APIs</h3><p>Small, well-defined services and clean REST APIs that front ends and partners can rely on.</p></article>
+      <article class="svc reveal"><span class="ci-icon"><i class="fa-solid fa-database"></i></span><h3>Data access that performs</h3><p>SQL Server with EF Core for productivity and Dapper for the queries that need raw speed.</p></article>
+      <article class="svc reveal"><span class="ci-icon"><i class="fa-brands fa-angular"></i></span><h3>Angular interfaces</h3><p>Responsive, accessible Angular and TypeScript front ends that talk cleanly to your API.</p></article>
+      <article class="svc reveal"><span class="ci-icon"><i class="fa-solid fa-cloud"></i></span><h3>Cloud and CI/CD</h3><p>Deployments on Azure and AWS with automated build, test and release pipelines.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Contact</h2>
+      <p>Have a project in mind? Send a message and I'll reply by email.</p>
     </div>
     <div class="contact-grid">
-        <div class="contact-info">
-            <div class="contact-info-card">
-                <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
-                <div><p class="ci-label">Email</p><p class="ci-value">sanjayjayaraj481@gmail.com</p></div>
-            </div>
-            <div class="contact-info-card">
-                <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
-                <div><p class="ci-label">Phone</p><p class="ci-value">+91 8075083859</p></div>
-            </div>
-            <div class="contact-info-card">
-                <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
-                <div><p class="ci-label">Location</p><p class="ci-value">Kerala, India</p></div>
-            </div>
-            <div class="contact-socials">
-                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="http://instagram.com/sanjay_jayaraj_" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
+      <div class="contact-info reveal">
+        <button class="info-card copy" data-copy="sanjayjayaraj481@gmail.com" type="button">
+          <span class="ci-icon"><i class="fa-solid fa-envelope"></i></span>
+          <span><small>Email</small><strong>sanjayjayaraj481@gmail.com</strong></span>
+          <i class="fa-regular fa-copy hint"></i>
+        </button>
+        <button class="info-card copy" data-copy="+91 8075083859" type="button">
+          <span class="ci-icon"><i class="fa-solid fa-phone"></i></span>
+          <span><small>Phone</small><strong>+91 8075083859</strong></span>
+          <i class="fa-regular fa-copy hint"></i>
+        </button>
+        <div class="info-card static">
+          <span class="ci-icon"><i class="fa-solid fa-location-dot"></i></span>
+          <span><small>Location</small><strong>Kerala, India</strong></span>
         </div>
-        <div class="contact-form-wrap">
-<form id="contactForm">                <div class="form-row">
-                    <div class="form-group">
-                        <label for="txt11">Your Name</label>
-                        <input type="text" id="txt11" placeholder="Sanjay Jayaraj" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email11">Your Email</label>
-                        <input type="email" id="email11" placeholder="sanjay@email.com" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="box11">Your Message</label>
-                    <textarea id="box11" placeholder="Let's build something amazing together..." required></textarea>
-                </div>
-                <button type="submit" class="btn-primary full-width">Send Message <i class="fa-solid fa-paper-plane"></i></button>
-            </form>
-        </div>
-    </div>
-</section>
+      </div>
 
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer">
-    <p>© 2026 <span>Sanjay Jayaraj</span>. All rights reserved.</p>
+      <form id="contactForm" class="form reveal" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required>
+          </div>
+          <div class="field">
+            <label for="email">Your email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project" required></textarea>
+        </div>
+        <input type="text" name="website" id="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn btn-primary full" id="sendBtn"><span>Send message</span> <i class="fa-solid fa-paper-plane"></i></button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p>© <span id="year">2026</span> Sanjay Jayaraj. All rights reserved.</p>
+  <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 </footer>
 
-<!-- ===== SCRIPTS ===== -->
-<script>
-/* ---- Theme Toggle ---- */
-const html = document.documentElement;
-const themeBtn = document.getElementById('themeToggle');
-
-const saved = localStorage.getItem('theme') || 'dark';
-html.setAttribute('data-theme', saved);
-
-themeBtn.addEventListener('click', () => {
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-});
-
-/* ---- Navbar scroll ---- */
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-/* ---- Hamburger ---- */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('active');
-});
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.classList.remove('active');
-    });
-});
-
-/* ---- Particles ---- */
-const pContainer = document.getElementById('particles');
-for (let i = 0; i < 22; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.cssText = `left:${Math.random()*100}%;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*8}s;width:${2+Math.random()*3}px;height:${2+Math.random()*3}px;`;
-    pContainer.appendChild(p);
-}
-
-/* ---- Skills animation ---- */
-const CIRC = 2 * Math.PI * 38;
-let animated = false;
-function triggerSkills() {
-    if (animated) return;
-    animated = true;
-    document.querySelectorAll('.ring-fill').forEach(r => {
-        const pct = parseInt(r.dataset.pct);
-        r.style.strokeDasharray = CIRC;
-        r.style.strokeDashoffset = CIRC;
-        setTimeout(() => { r.style.strokeDashoffset = CIRC - (CIRC * pct / 100); }, 300);
-    });
-    document.querySelectorAll('.bar-fill').forEach(b => {
-        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 500);
-    });
-}
-
-/* ---- Reveal on scroll ---- */
-const revealEls = document.querySelectorAll('.skill-card, .radial-card, .soft-card, .about-img-frame, .about-content-col, .contact-info-card, .contact-form-wrap');
-const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-    });
-}, { threshold: 0.1 });
-revealEls.forEach(el => revealObs.observe(el));
-
-const skillObs = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) { triggerSkills(); skillObs.disconnect(); }
-}, { threshold: 0.1 });
-skillObs.observe(document.getElementById('skill1'));
-</script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
