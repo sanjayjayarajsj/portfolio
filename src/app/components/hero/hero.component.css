@@ -1,0 +1,276 @@
+:host {
+  display: block;
+  position: relative;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--surface-canvas);
+}
+
+/* ==========================================================================
+   Atmospheric Aura & Glass Background
+   ========================================================================== */
+.hero-ripple-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-ripple-fade {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: -64px;
+}
+
+.hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.02);
+}
+
+.hero-aura-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: brightness(1.04);
+}
+
+.hero-liquid-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background: #080405;
+  opacity: 0.18;
+}
+
+.hero-top-fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, rgba(8, 4, 5, 0.65) 0%, rgba(8, 4, 5, 0) 100%);
+}
+
+.hero-bottom-dark {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.08) 35%,
+    rgba(0, 0, 0, 0.36) 65%,
+    rgba(0, 0, 0, 0.68) 88%,
+    #080405 100%
+  );
+}
+
+/* Fluted Glass Lines */
+.hero-panel-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.75;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.035) 0px 1px,
+    transparent 1px
+  );
+  background-size: clamp(140px, 12vw, 220px) 100%;
+}
+
+/* ==========================================================================
+   Inner Content
+   ========================================================================== */
+.hero-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: clamp(110px, 16vh, 180px);
+  padding-bottom: clamp(36px, 5vh, 64px);
+  position: relative;
+  z-index: 1;
+}
+
+.hero-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  flex: 1;
+  gap: var(--space-8);
+}
+
+/* ==========================================================================
+   Main Title (Sanjay Jayaraj)
+   ========================================================================== */
+.hero-title-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title-base {
+  font-family: var(--font-body);
+  font-size: var(--text-heading-5-5xl);
+  line-height: var(--leading-heading-5-5xl);
+  letter-spacing: var(--tracking-heading-5-5xl);
+  font-weight: var(--weight-heading-5-5xl);
+  color: #ffffff;
+  text-shadow: 0px 2px 28px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  max-width: 22ch;
+}
+
+.hero-word {
+  display: inline-block;
+  white-space: nowrap;
+  clip-path: inset(-0.4em -0.2em -0.1em);
+}
+
+.hero-char {
+  display: inline-block;
+  --rise-y: 0.45em;
+}
+
+/* ==========================================================================
+   Right Pitch Block
+   ========================================================================== */
+.hero-pitch {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  max-width: 33ch;
+  z-index: 2;
+}
+
+.hero-role {
+  font-size: var(--text-heading-lg);
+  line-height: var(--leading-heading-lg);
+  letter-spacing: var(--tracking-heading-lg);
+  font-weight: 500;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: max(12px, calc(var(--text-heading-lg) * 0.25));
+  margin-bottom: max(var(--space-6), var(--text-heading-lg));
+  text-shadow: 0px 2px 20px rgba(0, 0, 0, 0.95);
+}
+
+.hero-role-icon {
+  width: max(24px, calc(var(--text-heading-lg) * 0.7));
+  height: max(24px, calc(var(--text-heading-lg) * 0.7));
+  flex-shrink: 0;
+  filter: drop-shadow(0px 2px 16px rgba(0, 0, 0, 0.9));
+  transform: translateY(2px);
+}
+
+.hero-sub {
+  font-size: var(--text-heading-lg);
+  line-height: var(--leading-heading-lg);
+  letter-spacing: var(--tracking-heading-lg);
+  font-weight: 500;
+  color: #ffffff;
+  text-wrap: balance;
+  text-shadow: 0px 2px 20px rgba(0, 0, 0, 0.95);
+}
+
+/* ==========================================================================
+   Bottom Metadata
+   ========================================================================== */
+.hero-meta {
+  display: flex;
+  gap: clamp(32px, 6vw, 72px);
+  z-index: 2;
+  text-shadow: 0px 2px 18px rgba(0, 0, 0, 0.95);
+  margin-top: auto;
+  padding-top: var(--space-8);
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.hero-meta-label {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  line-height: var(--leading-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+}
+
+.hero-meta-value {
+  color: #ffffff;
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  line-height: var(--leading-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+}
+
+.hero-meta-link {
+  text-decoration: none;
+  transition: opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-meta-link:hover {
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-body {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero-pitch {
+    position: static;
+    top: auto;
+    right: auto;
+    transform: none;
+    max-width: 100%;
+    margin-top: var(--space-6);
+  }
+
+  .hero-meta {
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+}

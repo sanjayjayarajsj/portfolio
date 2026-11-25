@@ -1,0 +1,147 @@
+<!-- Fixed Interactive Navbar -->
+<app-navbar></app-navbar>
+
+<main id="main">
+  <!-- Hero Section with Interactive Liquid Ripple -->
+  <app-hero></app-hero>
+
+  <!-- Luminous Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- About / Introduction Section -->
+  <section id="about" class="editorial-section">
+    <div class="container">
+      <div class="editorial-grid">
+        <div class="editorial-head reveal-on-scroll">
+          <h2 class="editorial-title">About me</h2>
+          <p class="editorial-subtitle">Engineering resilient back ends and fluid interfaces from Kerala, India.</p>
+        </div>
+        <div class="editorial-body">
+          <p class="editorial-lead reveal-on-scroll delay-1">
+            I'm a full stack developer dedicated to building responsive, high-performance web products from database to browser.
+            I craft front ends with <em class="accent-text">Angular</em>, <em class="accent-text">TypeScript</em>, and clean modern CSS, backed by solid server architectures in <em class="accent-text">C#</em>, <em class="accent-text">ASP.NET Core</em>, and <em class="accent-text">Clean Architecture</em>.
+          </p>
+          <p class="editorial-paragraph reveal-on-scroll delay-2">
+            Whether writing high-throughput REST APIs, designing efficient schemas in SQL Server with EF Core and Dapper, or automating cloud deployments through Azure, AWS, and CI/CD pipelines, I prioritize code that is clean, testable, and built to scale.
+          </p>
+
+          <dl class="meta-details-list reveal-on-scroll delay-3">
+            <div class="meta-detail-row">
+              <dt class="meta-detail-dt">Location</dt>
+              <dd class="meta-detail-dd">Kerala, India</dd>
+            </div>
+            <div class="meta-detail-row">
+              <dt class="meta-detail-dt">Specialization</dt>
+              <dd class="meta-detail-dd">.NET Core, Angular, Cloud Architecture</dd>
+            </div>
+            <div class="meta-detail-row">
+              <dt class="meta-detail-dt">Status</dt>
+              <dd class="meta-detail-dd highlight-available">Available for projects</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luminous Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Skills & Engineering Stack Section -->
+  <section id="skills" class="editorial-section">
+    <div class="container">
+      <div class="section-head-unified reveal-on-scroll">
+        <h2 class="editorial-title">Skills & Capabilities</h2>
+        <p class="editorial-subtitle">Rigorous software engineering across every layer of the modern web stack.</p>
+      </div>
+
+      <div class="skills-card-grid">
+        @for (category of skillCategories; track category.index; let idx = $index) {
+          <article class="skill-card reveal-on-scroll" [class]="'delay-' + ((idx % 4) + 1)">
+            <div class="skill-card-header">
+              <span class="skill-card-index">{{ category.index }}</span>
+              <h3 class="skill-card-title">{{ category.title }}</h3>
+            </div>
+            <p class="skill-card-desc">{{ category.description }}</p>
+            <div class="skill-card-tags">
+              @for (tag of category.tags; track tag) {
+                <span class="skill-card-tag">{{ tag }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Luminous Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Selected Work Section -->
+  <section id="work" class="editorial-section">
+    <div class="container">
+      <div class="section-head-unified reveal-on-scroll">
+        <h2 class="editorial-title">Selected Work</h2>
+        <p class="editorial-subtitle">Two custom web applications shipped with precision and care.</p>
+      </div>
+
+      <div class="work-showcase-grid">
+        @for (project of projects; track project.title; let idx = $index) {
+          <article class="work-feature-card reveal-on-scroll" [class]="'delay-' + ((idx % 2) + 1)">
+            <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="work-frame-wrap" [attr.aria-label]="'Open live ' + project.title">
+              <div class="work-media-box">
+                <img [src]="project.image" [alt]="project.title" class="work-feature-img" loading="lazy" />
+                <div class="work-media-overlay">
+                  <span class="work-media-cta">
+                    <span>View live site</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <div class="work-card-info">
+              <div class="work-card-meta">
+                <span class="work-category-badge">{{ project.category }}</span>
+                <span class="work-year-badge">{{ project.year }}</span>
+              </div>
+
+              <h3 class="work-feature-title">
+                <a [href]="project.url" target="_blank" rel="noopener noreferrer">
+                  {{ project.title }}
+                </a>
+              </h3>
+
+              <p class="work-feature-desc">{{ project.description }}</p>
+
+              <div class="work-tag-list">
+                @for (tag of project.tags; track tag) {
+                  <span class="work-chip">{{ tag }}</span>
+                }
+              </div>
+
+              <div class="work-action-row">
+                <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="work-link-button">
+                  <span>Visit live project</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Luminous Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Reverse Hero Footer & Email Section -->
+  <app-footer></app-footer>
+</main>

@@ -1,0 +1,414 @@
+/* ==========================================================================
+   Editorial Sections (Matching arshawnarbabi.com visual style)
+   ========================================================================== */
+.editorial-section {
+  padding-block: clamp(72px, 10vw, 136px);
+  position: relative;
+  background-color: var(--surface-canvas);
+}
+
+.border-top {
+  border-top: 1px solid var(--neutral-12);
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.editorial-head {
+  position: sticky;
+  top: 100px;
+}
+
+.editorial-title {
+  font-family: var(--font-body);
+  font-size: var(--text-heading-4xl);
+  line-height: var(--leading-heading-4xl);
+  letter-spacing: var(--tracking-heading-4xl);
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: var(--space-3);
+}
+
+.editorial-subtitle {
+  font-size: var(--text-body-base);
+  color: var(--neutral-9);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+.section-head-unified {
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+/* Body Copy */
+.editorial-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.editorial-lead {
+  font-size: clamp(1.2rem, 1.1rem + 0.6vw, 1.6rem);
+  line-height: 1.5;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.editorial-paragraph {
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.accent-text {
+  font-style: normal;
+  color: #ffffff;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 1px;
+}
+
+/* Meta Details List */
+.meta-details-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--neutral-12);
+  margin-top: var(--space-4);
+}
+
+.meta-detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.meta-detail-dt {
+  font-size: var(--text-body-sm);
+  color: var(--neutral-9);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.meta-detail-dd {
+  font-size: var(--text-body-base);
+  color: #ffffff;
+}
+
+.highlight-available {
+  color: #4ade80;
+}
+
+/* ==========================================================================
+   Elevated Skills & Engineering Stack
+   ========================================================================== */
+.skills-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(24px, 3vw, 40px);
+}
+
+.skill-card {
+  background: rgba(22, 18, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--neutral-12);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 3.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.skill-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-card-index {
+  font-size: 0.85rem;
+  font-family: monospace;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+}
+
+.skill-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.skill-card-desc {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.skill-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skill-card-tag {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-card-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   Elevated Selected Work Showcase
+   ========================================================================== */
+.work-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.work-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  background: rgba(18, 14, 16, 0.6);
+  border: 1px solid var(--neutral-12);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  padding: clamp(20px, 2.5vw, 28px);
+  transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.work-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+}
+
+.work-frame-wrap {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.work-media-box {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #000000;
+  border-radius: inherit;
+}
+
+.work-feature-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.work-frame-wrap:hover .work-feature-img {
+  transform: scale(1.04);
+}
+
+.work-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 4, 5, 0.4);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.work-frame-wrap:hover .work-media-overlay {
+  opacity: 1;
+}
+
+.work-media-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #080405;
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transform: translateY(6px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-frame-wrap:hover .work-media-cta {
+  transform: translateY(0);
+}
+
+.work-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.work-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.work-category-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.work-year-badge {
+  font-size: var(--text-body-sm);
+  color: var(--neutral-9);
+}
+
+.work-feature-title {
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.work-feature-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.work-feature-title a:hover {
+  opacity: 0.8;
+}
+
+.work-feature-desc {
+  font-size: var(--text-body-base);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.work-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+
+.work-chip {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xs);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.work-action-row {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.work-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 3px;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.work-link-button:hover {
+  border-color: #ffffff;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .editorial-head {
+    position: static;
+  }
+
+  .work-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .editorial-section {
+    padding-block: 56px;
+  }
+
+  .skills-card-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill-card {
+    padding: 20px 18px;
+  }
+
+  .work-feature-card {
+    padding: 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .work-feature-title {
+    font-size: 1.35rem;
+  }
+
+  .meta-details-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

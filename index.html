@@ -9,28 +9,34 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="index.css">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 <script src="index.js" defer></script>
 </head>
 <body>
+<div class="bg-fixed" id="bgFixed" aria-hidden="true">
+  <video id="bgVideo" autoplay muted loop playsinline preload="auto" poster="bg-poster.jpg">
+    <source src="bg.mp4" type="video/mp4">
+    <source src="bg.webm" type="video/webm">
+  </video>
+</div>
 <div class="progress" id="progress"></div>
 
 <header class="navbar" id="navbar">
-  <a href="#home" class="logo" aria-label="Home">SJ<span>.</span></a>
+  <a href="#home" class="logo" aria-label="Home">Sanjay Jayaraj</a>
   <nav>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#services">What I do</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
   <div class="nav-right">
-    <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme"><i class="fa-solid fa-moon"></i></button>
+    <a class="nav-cta" href="mailto:sanjayjayaraj481@gmail.com?subject=Project%20enquiry">Hire me</a>
     <button class="icon-btn hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
@@ -38,32 +44,23 @@
 <main>
 <!-- HOME -->
 <section id="home" class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-text">
-      <p class="status"><span class="dot"></span> Open to freelance and full-time roles</p>
-      <h1 class="hero-name"><span class="line">Sanjay</span><span class="line">Jayaraj</span></h1>
-      <p class="hero-role">Full stack .NET developer building scalable web apps and REST APIs with C#, ASP.NET Core, Clean Architecture and Angular, shipped through Azure, AWS and CI/CD.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">Hire me</a>
-        <button class="btn btn-ghost copy" data-copy="sanjayjayaraj481@gmail.com" type="button"><i class="fa-regular fa-copy"></i> Copy email</button>
-      </div>
-      <div class="socials">
-        <a href="https://www.linkedin.com/in/Sanjay Jayaraj" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+  <div class="wrap hero-center">
+    <p class="eyebrow">Full stack .NET developer</p>
+    <h1 class="hero-name"><span class="line">Sanjay</span><span class="line">Jayaraj.</span></h1>
+    <p class="hero-role">Building scalable web apps and REST APIs with C#, ASP.NET Core, Clean Architecture and Angular, shipped through Azure, AWS and CI/CD.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View projects <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="#contact" class="btn btn-ghost">Hire me</a>
+    </div>
+    <p class="popular"><b>Stack:</b><span>C#</span><span>ASP.NET Core</span><span>Angular</span><span>Azure</span></p>
+    <div class="socials">
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         <a href="https://instagram.com/sanjay_jayaraj_" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://github.com/sanjayjayarajsj" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         <a href="https://wa.me/918075083859" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
-    </div>
-    <div class="hero-photo">
-      <img src="pic.PNG" alt="Portrait of Sanjay Jayaraj" width="720" height="720" fetchpriority="high">
-    </div>
   </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>C#</span><span>ASP.NET Core</span><span>MVC</span><span>Microservices</span><span>Clean Architecture</span><span>SQL Server</span><span>EF Core</span><span>Dapper</span><span>REST APIs</span><span>Angular</span><span>TypeScript</span><span>Azure</span><span>AWS</span><span>CI/CD</span>
-      <span>C#</span><span>ASP.NET Core</span><span>MVC</span><span>Microservices</span><span>Clean Architecture</span><span>SQL Server</span><span>EF Core</span><span>Dapper</span><span>REST APIs</span><span>Angular</span><span>TypeScript</span><span>Azure</span><span>AWS</span><span>CI/CD</span>
-    </div>
-  </div>
+  <a href="#about" class="scroll-hint" aria-label="Scroll to explore">Scroll to explore <i class="fa-solid fa-arrow-down"></i></a>
 </section>
 
 <!-- ABOUT -->
@@ -174,8 +171,38 @@
   </div>
 </section>
 
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Selected work</h2>
+      <p>Two recent builds. Open the live site, or message me about yours.</p>
+    </div>
+    <div class="proj-grid">
+      <article class="proj reveal">
+        <a class="proj-img" href="https://lnkd.in/ddChaBDA" target="_blank" rel="noopener noreferrer" aria-label="Open Silko live site"><img src="project-silko.jpg" alt="Silko Time e-commerce website home page" width="1400" height="788" loading="lazy"></a>
+        <div class="proj-body">
+          <div><span class="kind">E-commerce website</span><h3>Silko</h3></div>
+          <a class="proj-link" href="https://lnkd.in/ddChaBDA" target="_blank" rel="noopener noreferrer">View live site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </article>
+      <article class="proj reveal">
+        <a class="proj-img" href="https://lnkd.in/dysVRKX2" target="_blank" rel="noopener noreferrer" aria-label="Open Stag live site"><img src="project-stag.jpg" alt="Stag drinks website home page" width="1400" height="788" loading="lazy"></a>
+        <div class="proj-body">
+          <div><span class="kind">Drinks website</span><h3>Stag</h3></div>
+          <a class="proj-link" href="https://lnkd.in/dysVRKX2" target="_blank" rel="noopener noreferrer">View live site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+        </div>
+      </article>
+    </div>
+    <div class="proj-cta reveal">
+      <p>Have a project in mind? Tell me what you&rsquo;re working on.</p>
+      <a class="btn btn-primary" href="mailto:sanjayjayaraj481@gmail.com?subject=Project%20enquiry">Start a project <i class="fa-solid fa-arrow-right-long"></i></a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
-<section id="contact" class="section alt">
+<section id="contact" class="section">
   <div class="wrap">
     <div class="section-head reveal">
       <h2>Contact</h2>

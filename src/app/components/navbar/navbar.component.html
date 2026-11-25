@@ -1,0 +1,71 @@
+<nav
+  class="site-nav"
+  [class.is-scrolled]="isScrolled()"
+  [class.menu-open]="isMenuOpen()"
+  [style.--nav-p]="scrollProgress()"
+  aria-label="Primary"
+>
+  <!-- Mark / Brand Logo (Morphs between SJ monogram and Sanjay Jayaraj wordmark) -->
+  <a href="#hero" class="site-mark" aria-label="Sanjay Jayaraj">
+    <span class="site-wordmark" aria-hidden="true">
+      <span class="word">Sanjay</span>
+      <span class="space"> </span>
+      <span class="word">Jayaraj</span>
+    </span>
+    <span class="site-glyph" aria-hidden="true"></span>
+  </a>
+
+  <!-- Desktop Nav Links -->
+  <div class="site-links" data-nav-links="">
+    <a href="#about" class="site-item">
+      <span>About</span>
+    </a>
+    <a href="#skills" class="site-item">
+      <span>Skills</span>
+    </a>
+    <a href="#work" class="site-item">
+      <span>Work</span>
+    </a>
+    <a href="#contact" class="site-cta" data-label="Start a project">
+      <span class="site-cta-label">Start a project</span>
+      <span class="site-cta-fill" aria-hidden="true">Start a project</span>
+    </a>
+  </div>
+
+  <!-- Mobile Hamburger Button -->
+  <button
+    type="button"
+    class="site-burger"
+    [attr.aria-expanded]="isMenuOpen()"
+    (click)="toggleMenu()"
+    aria-label="Toggle navigation menu"
+  >
+    <span class="site-burger-box" aria-hidden="true">
+      <span class="site-burger-line"></span>
+      <span class="site-burger-line"></span>
+    </span>
+  </button>
+</nav>
+
+<!-- Mobile Scrim Backdrop -->
+<div
+  class="site-scrim"
+  [class.is-open]="isMenuOpen()"
+  (click)="closeMenu()"
+  aria-hidden="true"
+></div>
+
+<!-- Mobile Dropdown / Sheet Navigation -->
+<nav
+  id="site-menu"
+  class="site-sheet"
+  [class.is-open]="isMenuOpen()"
+  aria-label="Mobile Navigation"
+>
+  <div class="site-sheet-inner">
+    <a href="#about" (click)="closeMenu()" class="site-sheet-item">About</a>
+    <a href="#skills" (click)="closeMenu()" class="site-sheet-item">Skills</a>
+    <a href="#work" (click)="closeMenu()" class="site-sheet-item">Work</a>
+    <a href="#contact" (click)="closeMenu()" class="site-sheet-cta">Start a project</a>
+  </div>
+</nav>

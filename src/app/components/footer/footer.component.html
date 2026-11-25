@@ -1,0 +1,193 @@
+<section id="contact" class="closer-section" aria-labelledby="contact-close-heading">
+  <!-- Reverse Atmospheric Aura Background (Mirroring the Hero) -->
+  <div class="closer-backdrop" aria-hidden="true">
+    <div class="closer-top-dark"></div>
+    <div class="closer-aura-wrap">
+      <img
+        src="/hero/aura.webp"
+        alt=""
+        class="closer-aura-img"
+        loading="lazy"
+      />
+      <div class="closer-veil"></div>
+    </div>
+    <div class="closer-bottom-fade"></div>
+    <div class="closer-panel-lines"></div>
+  </div>
+
+  <div class="container closer-inner">
+    <!-- Top Grid: Brand & Form -->
+    <div class="closer-grid">
+      <!-- Left: Brand Monogram & Social Links -->
+      <div class="closer-brand-col">
+        <div class="closer-brand-mark" aria-hidden="true">
+          <span class="closer-glyph"></span>
+        </div>
+        <p class="closer-bio">
+          Full stack developer building high-throughput services with C# / .NET and fluid interfaces with Angular.
+        </p>
+
+        <!-- Social Links -->
+        <ul class="closer-socials">
+          <li>
+            <a href="https://github.com/sanjayjayarajsj" target="_blank" rel="noopener noreferrer" class="closer-social">
+              <span>GitHub</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/sanjay_jayaraj_" target="_blank" rel="noopener noreferrer" class="closer-social">
+              <span>Instagram</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/918075083859" target="_blank" rel="noopener noreferrer" class="closer-social">
+              <span>WhatsApp</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Direct Contact Chips -->
+        <div class="closer-contact-chips">
+          <button type="button" class="contact-chip" (click)="copyText('sanjayjayaraj481@gmail.com')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>sanjayjayaraj481&#64;gmail.com</span>
+          </button>
+          <a href="https://wa.me/918075083859" target="_blank" rel="noopener noreferrer" class="contact-chip">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span>+91 8075083859</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Interactive Email Form Section -->
+      <div class="closer-form-col">
+        <h2 id="contact-close-heading" class="closer-heading">Tell me what you're working on.</h2>
+        <p class="closer-sub">Even if it's just an early idea or architecture question, you can send me a message directly.</p>
+
+        <form class="closer-form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="form-name" class="form-label">Your Name</label>
+              <input
+                type="text"
+                id="form-name"
+                name="name"
+                [(ngModel)]="name"
+                placeholder="John Doe"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="form-email" class="form-label">Your Email</label>
+              <input
+                type="email"
+                id="form-email"
+                name="email"
+                [(ngModel)]="email"
+                placeholder="john&#64;example.com"
+                class="form-input"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="form-message" class="form-label">Message</label>
+            <textarea
+              id="form-message"
+              name="message"
+              [(ngModel)]="message"
+              rows="4"
+              placeholder="Tell me about your project, timeline, or requirements..."
+              class="form-textarea"
+              required
+            ></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input
+            type="text"
+            name="honeypot"
+            [(ngModel)]="honeypot"
+            class="sr-only"
+            tabindex="-1"
+            autocomplete="off"
+          />
+
+          <div class="form-actions">
+            <button
+              type="submit"
+              class="form-submit-btn"
+              [disabled]="isSending()"
+            >
+              @if (isSending()) {
+                <span>Sending…</span>
+              } @else {
+                <span>Send message</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              }
+            </button>
+
+            @if (formStatus().message) {
+              <p
+                class="form-status-msg"
+                [class.is-error]="formStatus().type === 'error'"
+                [class.is-success]="formStatus().type === 'success'"
+                role="status"
+              >
+                {{ formStatus().message }}
+              </p>
+            }
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Colophon: Giant Display Name at the Bottom (Like Hero Section Reverse) -->
+    <div class="closer-colophon">
+      <div class="closer-name-wrap" aria-hidden="true">
+        <p class="closer-display-name">
+          <span class="closer-word">Sanjay</span>
+          <span class="closer-space"> </span>
+          <span class="closer-word">Jayaraj</span>
+        </p>
+      </div>
+
+      <div class="closer-footer-bar">
+        <p class="closer-copyright">
+          <span>© 2026 Sanjay Jayaraj</span>
+          <span class="footer-separator">•</span>
+          <span>Crafted in Angular</span>
+        </p>
+        <button type="button" class="closer-back-to-top" (click)="scrollToTop()">
+          <span>Back to top ↑</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating Toast -->
+@if (toastMessage()) {
+  <div class="closer-toast" role="alert">
+    {{ toastMessage() }}
+  </div>
+}

@@ -1,0 +1,100 @@
+<section id="hero" class="hero-section" aria-labelledby="hero-title">
+  <!-- Atmospheric Aura & Fluted Glass Background with Live Liquid Ripple -->
+  <div class="hero-ripple-wrap" aria-hidden="true">
+    <div class="hero-ripple-fade">
+      <div class="hero-bg">
+        <div class="hero-img-wrap">
+          <!-- Fallback Image -->
+          <img
+            src="/hero/aura.webp"
+            alt=""
+            class="hero-aura-img"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <!-- Interactive Liquid WebGL Canvas -->
+          <canvas #liquidCanvas class="hero-liquid-canvas"></canvas>
+        </div>
+        <div class="hero-veil"></div>
+      </div>
+      <div class="hero-top-fade"></div>
+      <div class="hero-bottom-dark"></div>
+    </div>
+    <div class="hero-panel-lines"></div>
+  </div>
+
+  <!-- Inner Content -->
+  <div class="container hero-inner">
+    <div class="hero-body">
+      <!-- Main Title (Sanjay Jayaraj in giant display typography) -->
+      <div class="hero-title-wrap">
+        <h1 id="hero-title" class="hero-title-base">
+          <span class="sr-only">Sanjay Jayaraj</span>
+
+          <!-- First Name: Sanjay -->
+          <span class="hero-word" aria-hidden="true">
+            @for (char of firstNameChars; track $index) {
+              <span class="hero-char anim-charRise" [style.--i]="$index" [style.--anim-base]="'0ms'">
+                {{ char }}
+              </span>
+            }
+          </span>
+
+          <!-- Last Name: Jayaraj -->
+          <span class="hero-word" aria-hidden="true">
+            @for (char of lastNameChars; track $index) {
+              <span class="hero-char anim-charRise" [style.--i]="$index" [style.--anim-base]="'80ms'">
+                {{ char }}
+              </span>
+            }
+          </span>
+        </h1>
+      </div>
+
+      <!-- Right-Aligned Role & Pitch -->
+      <div class="hero-pitch">
+        <p class="hero-role">
+          <span class="anim-wordFade" style="--anim-base: 260ms; --i: 0;">Full stack developer</span>
+          <span class="anim-riseWhole" style="--anim-base: 420ms;">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="hero-role-icon"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 17.3497C9 17.3497 15.9383 17.8924 16.9154 16.9154C17.8924 15.9383 17.3496 9 17.3496 9M16.5 16.5L6.5 6.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </span>
+        </p>
+        <p class="hero-sub">
+          <span class="anim-wordFade" style="--anim-base: 380ms; --i: 0;">
+            I design and build web apps and scalable back ends.
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Metadata (Availability & Contact) -->
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label anim-wordFade" style="--anim-base: 560ms; --i: 0;">Availability</span>
+        <span class="hero-meta-value anim-wordFade" style="--anim-base: 650ms; --i: 1;">I'm taking projects, about a week to start.</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label anim-wordFade" style="--anim-base: 740ms; --i: 0;">Contact</span>
+        <a class="hero-meta-value hero-meta-link anim-wordFade" style="--anim-base: 830ms; --i: 1;" href="mailto:sanjayjayaraj481@gmail.com">
+          sanjayjayaraj481&#64;gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

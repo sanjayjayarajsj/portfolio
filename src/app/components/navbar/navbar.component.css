@@ -1,0 +1,354 @@
+:host {
+  display: block;
+}
+
+/* ==========================================================================
+   Main Navbar Container
+   ========================================================================== */
+.site-nav {
+  position: fixed;
+  top: clamp(16px, 3vh, 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(min(var(--content-cap), 100vw) - 2 * var(--page-margin));
+  height: 56px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md2);
+  background: transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border: 1px solid transparent;
+  transition:
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    padding 0.4s ease;
+  font-family: var(--font-body);
+}
+
+/* Scrolled (Pill) State */
+.site-nav.is-scrolled {
+  width: min(calc(100vw - 2 * var(--page-margin)), 560px);
+  background: rgba(18, 14, 16, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  padding: 6px 16px;
+}
+
+@supports (background: color-mix(in oklch, black, white)) {
+  .site-nav.is-scrolled {
+    background: color-mix(in oklch, var(--surface-canvas) 68%, transparent);
+  }
+}
+
+/* ==========================================================================
+   Brand Mark (Morphing Monogram / Full Wordmark)
+   ========================================================================== */
+.site-mark {
+  display: grid;
+  place-items: center start;
+  min-height: 44px;
+  text-decoration: none;
+  color: var(--text-primary);
+  position: relative;
+  overflow: visible;
+  padding-inline: 4px;
+}
+
+.site-mark > * {
+  grid-area: 1 / 1;
+}
+
+/* SJ Monogram (Visible when at top) */
+.site-glyph {
+  display: block;
+  height: 22px;
+  aspect-ratio: 1.48;
+  background-color: currentColor;
+  -webkit-mask: url(/brand/mark-sj.svg) 50% / contain no-repeat;
+  mask: url(/brand/mark-sj.svg) 50% / contain no-repeat;
+  transition: opacity 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.32s ease, transform 0.32s ease;
+  opacity: calc(1 - var(--nav-p, 0));
+  filter: blur(calc(var(--nav-p, 0) * 3px));
+  transform: scale(calc(1 - var(--nav-p, 0) * 0.12));
+  pointer-events: none;
+}
+
+.site-nav.is-scrolled .site-glyph {
+  opacity: 0;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* Full Wordmark: Sanjay Jayaraj (Fades & Unblurs when scrolled) */
+.site-wordmark {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  white-space: nowrap;
+  position: relative;
+  line-height: 1;
+  transition: opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease, transform 0.35s ease;
+  opacity: var(--nav-p, 0);
+  filter: blur(calc((1 - var(--nav-p, 0)) * 4px));
+  transform: translateY(calc((1 - var(--nav-p, 0)) * 4px));
+}
+
+.site-nav:not(.is-scrolled) .site-wordmark {
+  pointer-events: none;
+}
+
+.site-nav.is-scrolled .site-wordmark {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Underline grow on hover */
+.site-wordmark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1.5px;
+  background: currentColor;
+  transform-origin: 0;
+  transform: scaleX(0);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.site-mark:hover .site-wordmark::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   Navigation Links (Right side)
+   ========================================================================== */
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 32px);
+  margin-left: auto;
+}
+
+.site-item {
+  position: relative;
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+}
+
+.site-item:hover {
+  color: #ffffff;
+}
+
+/* CTA Pill Button (Start a project) */
+.site-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  overflow: hidden;
+  background: transparent;
+  transition: border-color 0.25s ease, transform 0.2s ease;
+}
+
+.site-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: inherit;
+  transform: translateY(102%);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.site-cta-label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.25s ease;
+}
+
+.site-cta-fill {
+  display: none;
+}
+
+.site-cta:hover {
+  border-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.site-cta:hover::before {
+  transform: translateY(0);
+}
+
+.site-cta:hover .site-cta-label {
+  color: #080405;
+}
+
+/* ==========================================================================
+   Mobile Burger & Menu Sheet
+   ========================================================================== */
+.site-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0;
+  margin-left: auto;
+}
+
+.site-burger-box {
+  position: relative;
+  width: 20px;
+  height: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.site-burger-line {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.site-nav.menu-open .site-burger-line:first-child {
+  transform: translateY(5.25px) rotate(45deg);
+}
+
+.site-nav.menu-open .site-burger-line:last-child {
+  transform: translateY(-5.25px) rotate(-45deg);
+}
+
+/* Scrim */
+.site-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.site-scrim.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sheet Menu */
+.site-sheet {
+  position: fixed;
+  top: calc(var(--page-margin) + 60px);
+  left: var(--page-margin);
+  right: var(--page-margin);
+  background: rgba(18, 14, 16, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+  z-index: 55;
+  padding: var(--space-6) var(--space-4);
+  transform: translateY(-16px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.site-sheet.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-sheet-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.site-sheet-item {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: var(--text-body-lg);
+  font-weight: 500;
+  padding: 8px 16px;
+  width: 100%;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.site-sheet-item:hover {
+  color: #ffffff;
+}
+
+.site-sheet-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 24px;
+  background: #ffffff;
+  color: #080405;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  margin-top: var(--space-2);
+}
+
+/* Responsive queries */
+@media (max-width: 900px) {
+  .site-links {
+    display: none;
+  }
+
+  .site-burger {
+    display: flex;
+  }
+
+  .site-nav {
+    width: calc(100vw - 2 * var(--page-margin));
+  }
+
+  .site-nav.is-scrolled {
+    width: calc(100vw - 2 * var(--page-margin));
+  }
+}

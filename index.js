@@ -7,26 +7,33 @@ const EMAILJS = {
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
-/* ============ Theme ============ */
-const root = document.documentElement;
-const themeBtn = $("#themeToggle");
-function setTheme(t) {
-  root.dataset.theme = t;
-  themeBtn.innerHTML = `<i class="fa-solid fa-${t === "dark" ? "moon" : "sun"}"></i>`;
-  try { localStorage.setItem("theme", t); } catch (e) {}
-}
-let saved = "dark";
-try { saved = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"); } catch (e) {}
-setTheme(saved);
-themeBtn.addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+document.documentElement.dataset.theme = "dark"; // dark-only site
 
 /* ============ Navbar, progress bar, active link ============ */
 const navbar = $("#navbar"), progress = $("#progress");
 const links = $$(".nav-links a");
+/* Background video: visible on the hero, fades to black while scrolling,
+   and fades back in at the footer. */
+const bg = $("#bgFixed"), vid = $("#bgVideo");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = t => t * t * (3 - 2 * t);
+let vidOn = true;
+if (reduceMotion) vid.pause(); else vid.play().catch(() => {});
+function bgFade(y, max) {
+  const heroH = $("#home").offsetHeight;
+  const top = 1 - ease(clamp(y / (heroH * 0.85)));
+  const bottom = ease(clamp(1 - (max - y) / (innerHeight * 0.9)));
+  const o = Math.max(top, bottom);
+  bg.style.opacity = o.toFixed(3);
+  const on = o > 0.02;
+  if (on !== vidOn && !reduceMotion) { vidOn = on; on ? vid.play().catch(() => {}) : vid.pause(); }
+}
 const sections = links.map(a => $(a.getAttribute("href")));
 function onScroll() {
   const y = window.scrollY, max = document.body.scrollHeight - innerHeight;
   navbar.classList.toggle("scrolled", y > 30);
+  bgFade(y, max);
   progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
   let current = 0;
   sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= innerHeight * 0.4) current = i; });
