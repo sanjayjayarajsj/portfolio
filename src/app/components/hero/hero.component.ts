@@ -4,9 +4,9 @@ import {
   ViewChild,
   AfterViewInit,
   OnDestroy,
-  HostListener,
   inject,
-  PLATFORM_ID
+  PLATFORM_ID,
+  NgZone
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
@@ -24,6 +24,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   lastNameChars = 'Jayaraj'.split('');
 
   private platformId = inject(PLATFORM_ID);
+  private ngZone = inject(NgZone);
   private gl: WebGLRenderingContext | null = null;
   private animationFrameId: number | null = null;
   private program: WebGLProgram | null = null;
@@ -40,54 +41,89 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private targetMouseY = 0;
   private velocity = 0;
   private startTime = Date.now();
+  private isVisible = true;
+
+  private heroObserver?: IntersectionObserver;
+  private cleanupListeners?: () => void;
 
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId) && this.canvasRef) {
+    if (!isPlatformBrowser(this.platformId) || !this.canvasRef) return;
+
+    this.ngZone.runOutsideAngular(() => {
       this.initWebGL();
-    }
+      this.setupVisibilityObserver();
+      this.setupEventListeners();
+    });
+  }
+
+  private setupVisibilityObserver(): void {
+    const canvas = this.canvasRef.nativeElement;
+    this.heroObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const wasVisible = this.isVisible;
+          this.isVisible = entry.isIntersecting;
+          if (!wasVisible && this.isVisible && this.gl && this.program) {
+            this.render();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    this.heroObserver.observe(canvas);
+  }
+
+  private setupEventListeners(): void {
+    const canvas = this.canvasRef.nativeElement;
+    const heroSection = canvas.closest('.hero-section') || canvas;
+
+    const onPointerMove = (e: MouseEvent | TouchEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = 'touches' in e ? e.touches[0]?.clientX : (e as MouseEvent).clientX;
+      const clientY = 'touches' in e ? e.touches[0]?.clientY : (e as MouseEvent).clientY;
+      if (clientX === undefined || clientY === undefined) return;
+
+      this.targetMouseX = clientX - rect.left;
+      this.targetMouseY = clientY - rect.top;
+
+      const dx = this.targetMouseX - this.mouseX;
+      const dy = this.targetMouseY - this.mouseY;
+      const speed = Math.sqrt(dx * dx + dy * dy);
+      this.velocity = Math.min(this.velocity + speed * 0.06, 2.5);
+    };
+
+    const onResize = () => {
+      if (this.gl && this.canvasRef) {
+        this.resizeCanvas();
+      }
+    };
+
+    heroSection.addEventListener('pointermove', onPointerMove as EventListener, { passive: true });
+    heroSection.addEventListener('touchmove', onPointerMove as EventListener, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+
+    this.cleanupListeners = () => {
+      heroSection.removeEventListener('pointermove', onPointerMove as EventListener);
+      heroSection.removeEventListener('touchmove', onPointerMove as EventListener);
+      window.removeEventListener('resize', onResize);
+    };
   }
 
   ngOnDestroy(): void {
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
     }
-  }
-
-  @HostListener('mousemove', ['$event'])
-  onMouseMove(e: MouseEvent): void {
-    const rect = this.canvasRef?.nativeElement.getBoundingClientRect();
-    if (!rect) return;
-
-    this.targetMouseX = e.clientX - rect.left;
-    this.targetMouseY = e.clientY - rect.top;
-
-    const dx = this.targetMouseX - this.mouseX;
-    const dy = this.targetMouseY - this.mouseY;
-    const speed = Math.sqrt(dx * dx + dy * dy);
-    this.velocity = Math.min(this.velocity + speed * 0.08, 2.5);
-  }
-
-  @HostListener('touchmove', ['$event'])
-  onTouchMove(e: TouchEvent): void {
-    if (e.touches.length === 0) return;
-    const rect = this.canvasRef?.nativeElement.getBoundingClientRect();
-    if (!rect) return;
-
-    this.targetMouseX = e.touches[0].clientX - rect.left;
-    this.targetMouseY = e.touches[0].clientY - rect.top;
-    this.velocity = Math.min(this.velocity + 1.2, 2.5);
-  }
-
-  @HostListener('window:resize', [])
-  onResize(): void {
-    if (this.gl && this.canvasRef) {
-      this.resizeCanvas();
+    if (this.heroObserver) {
+      this.heroObserver.disconnect();
+    }
+    if (this.cleanupListeners) {
+      this.cleanupListeners();
     }
   }
 
   private initWebGL(): void {
     const canvas = this.canvasRef.nativeElement;
-    this.gl = canvas.getContext('webgl', { alpha: true, antialias: true });
+    this.gl = canvas.getContext('webgl', { alpha: true, antialias: false, powerPreference: 'high-performance' });
     if (!this.gl) return;
 
     const gl = this.gl;
@@ -211,7 +247,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   }
 
   private render = (): void => {
-    if (!this.gl || !this.program) return;
+    if (!this.isVisible || !this.gl || !this.program) return;
     const gl = this.gl;
     const canvas = this.canvasRef.nativeElement;
 

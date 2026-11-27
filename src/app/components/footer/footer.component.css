@@ -125,12 +125,12 @@
   max-width: 32ch;
 }
 
-/* Social links */
+/* Prominent Editorial Social Links */
 .closer-socials {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: clamp(10px, 1.5vh, 16px);
   padding: 0;
   margin: 0;
 }
@@ -138,20 +138,45 @@
 .closer-social {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: #ffffff;
-  font-size: var(--text-body-base);
-  font-weight: 500;
+  justify-content: space-between;
+  gap: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  width: fit-content;
-  padding-bottom: 2px;
-  transition: border-color 0.2s ease, opacity 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  max-width: 340px;
+  padding: 6px 0 10px 0;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closer-social-name {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closer-social-arrow {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.45);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .closer-social:hover {
-  border-color: #ffffff;
-  opacity: 0.8;
+  color: #ffffff;
+  border-bottom-color: rgba(255, 255, 255, 0.45);
+  transform: translateX(4px);
+}
+
+.closer-social:hover .closer-social-name {
+  color: #ffffff;
+}
+
+.closer-social:hover .closer-social-arrow {
+  transform: translate(3px, -3px);
+  color: #ffffff;
 }
 
 /* Contact Quick Chips */

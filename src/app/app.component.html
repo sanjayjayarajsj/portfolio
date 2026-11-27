@@ -1,3 +1,9 @@
+<!-- Cinematic Camera Zoom Loader Screen -->
+<app-loader></app-loader>
+
+<!-- Subtle Top Reading Scroll Progress Indicator -->
+<div class="scroll-indicator-bar" id="scrollIndicator" style="width: 100%; transform: scaleX(0);" aria-hidden="true"></div>
+
 <!-- Fixed Interactive Navbar -->
 <app-navbar></app-navbar>
 
@@ -47,94 +53,137 @@
   <!-- Luminous Section Divider -->
   <div class="section-divider" aria-hidden="true"></div>
 
-  <!-- Skills & Engineering Stack Section -->
-  <section id="skills" class="editorial-section">
+  <!-- What We Do / Disciplines Section (Exact Fraxbit Layout & Animations) -->
+  <section id="skills" class="editorial-section disciplines-section" aria-labelledby="disciplines-title">
     <div class="container">
-      <div class="section-head-unified reveal-on-scroll">
-        <h2 class="editorial-title">Skills & Capabilities</h2>
-        <p class="editorial-subtitle">Rigorous software engineering across every layer of the modern web stack.</p>
+      <div class="disciplines-header-grid">
+        <div class="disciplines-header-main reveal-on-scroll">
+          <p class="section-tag-badge">
+            <span aria-hidden="true" class="tag-badge-dot"></span>
+            What I Do
+          </p>
+          <h2 id="disciplines-title" class="disciplines-main-title">
+            Four disciplines. One engineer<span class="text-accent">.</span>
+          </h2>
+        </div>
+        <p class="disciplines-header-sub reveal-on-scroll delay-1">
+          Every layer is engineered around one outcome: resilient, scalable systems with fluid interfaces.
+        </p>
       </div>
 
-      <div class="skills-card-grid">
-        @for (category of skillCategories; track category.index; let idx = $index) {
-          <article class="skill-card reveal-on-scroll" [class]="'delay-' + ((idx % 4) + 1)">
-            <div class="skill-card-header">
-              <span class="skill-card-index">{{ category.index }}</span>
-              <h3 class="skill-card-title">{{ category.title }}</h3>
-            </div>
-            <p class="skill-card-desc">{{ category.description }}</p>
-            <div class="skill-card-tags">
-              @for (tag of category.tags; track tag) {
-                <span class="skill-card-tag">{{ tag }}</span>
-              }
-            </div>
-          </article>
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Luminous Section Divider -->
-  <div class="section-divider" aria-hidden="true"></div>
-
-  <!-- Selected Work Section -->
-  <section id="work" class="editorial-section">
-    <div class="container">
-      <div class="section-head-unified reveal-on-scroll">
-        <h2 class="editorial-title">Selected Work</h2>
-        <p class="editorial-subtitle">Two custom web applications shipped with precision and care.</p>
-      </div>
-
-      <div class="work-showcase-grid">
-        @for (project of projects; track project.title; let idx = $index) {
-          <article class="work-feature-card reveal-on-scroll" [class]="'delay-' + ((idx % 2) + 1)">
-            <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="work-frame-wrap" [attr.aria-label]="'Open live ' + project.title">
-              <div class="work-media-box">
-                <img [src]="project.image" [alt]="project.title" class="work-feature-img" loading="lazy" />
-                <div class="work-media-overlay">
-                  <span class="work-media-cta">
-                    <span>View live site</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </span>
-                </div>
+      <ol class="disciplines-list">
+        @for (item of disciplines; track item.index; let idx = $index) {
+          <li class="discipline-li reveal-on-scroll" [class]="'delay-' + ((idx % 4) + 1)">
+            <span aria-hidden="true" class="discipline-divider-line"></span>
+            <div class="discipline group">
+              <span aria-hidden="true" class="discipline__fill"></span>
+              <span class="discipline__index">{{ item.index }}</span>
+              <div class="discipline__head">
+                <span class="discipline__title">
+                  <span aria-hidden="true" class="discipline__dot"></span>
+                  {{ item.title }}
+                </span>
+                <span class="discipline__tagline">{{ item.tagline }}</span>
               </div>
-            </a>
-
-            <div class="work-card-info">
-              <div class="work-card-meta">
-                <span class="work-category-badge">{{ project.category }}</span>
-                <span class="work-year-badge">{{ project.year }}</span>
-              </div>
-
-              <h3 class="work-feature-title">
-                <a [href]="project.url" target="_blank" rel="noopener noreferrer">
-                  {{ project.title }}
-                </a>
-              </h3>
-
-              <p class="work-feature-desc">{{ project.description }}</p>
-
-              <div class="work-tag-list">
-                @for (tag of project.tags; track tag) {
-                  <span class="work-chip">{{ tag }}</span>
+              <div class="discipline__items">
+                @for (tech of item.items; track tech) {
+                  <span>{{ tech }}</span>
                 }
               </div>
-
-              <div class="work-action-row">
-                <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="work-link-button">
-                  <span>Visit live project</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
+              <div class="discipline__arrow" aria-hidden="true">
+                <span class="arrow-icon">
+                  <svg viewBox="0 0 12 12" fill="none" class="arrow-icon__svg">
+                    <path d="M3 1.5h7.5V9M10.5 1.5 1.5 10.5" stroke="currentColor" stroke-width="1.5"></path>
                   </svg>
-                </a>
+                  <svg viewBox="0 0 12 12" fill="none" class="arrow-icon__svg">
+                    <path d="M3 1.5h7.5V9M10.5 1.5 1.5 10.5" stroke="currentColor" stroke-width="1.5"></path>
+                  </svg>
+                </span>
               </div>
             </div>
-          </article>
+          </li>
         }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Luminous Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Selected Works Section (Exact Fraxbit Selected Work Section) -->
+  <section id="work" data-header-theme="light" data-stage="over" class="works-section" aria-labelledby="work-title">
+    <div class="container">
+      <div class="works-header-grid">
+        <div>
+          <p data-reveal="fade" class="portfolio-tag">
+            <span aria-hidden="true" class="portfolio-tag-dot"></span>
+            Portfolio
+          </p>
+          <h2 id="work-title" data-reveal="split" class="works-main-title">
+            Selected work<span class="text-accent">.</span>
+          </h2>
+        </div>
+        <p data-reveal="fade" class="works-header-sub">
+          Recent projects across design, development and cloud architecture.
+        </p>
+      </div>
+
+      <ul class="works-masonry-grid">
+        @for (project of projects; track project.title; let idx = $index) {
+          <li class="work-masonry-item" [class]="project.gridClass">
+            <a
+              [href]="project.url"
+              [target]="project.url.startsWith('http') ? '_blank' : '_self'"
+              rel="noopener noreferrer"
+              class="work-card"
+              [class]="project.cardTypeClass"
+              data-cursor="view"
+              [attr.aria-label]="project.title"
+            >
+              <div data-reveal="clip" class="work-card__reveal">
+                <div class="work-card__frame">
+                  <div data-parallax="true" class="work-card__parallax">
+                    <img
+                      [src]="project.image"
+                      [alt]="project.title"
+                      class="work-card__img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div data-reveal="fade" class="work-card__caption">
+                <div class="work-card__title-row">
+                  <div class="work-card__title-wrap">
+                    <span class="work-card__index">{{ project.index }}</span>
+                    <h3 class="work-card__title">{{ project.title }}</h3>
+                  </div>
+                  <p class="work-card__category">{{ project.category }}</p>
+                </div>
+                <p class="work-card__services">{{ project.services }}</p>
+              </div>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <!-- Bottom Centered Action matching Fraxbit -->
+      <div data-reveal="fade" class="works-bottom-cta">
+        <a href="#contact" class="frax-btn frax-btn--dark">
+          <span class="frax-btn__label">Start a project</span>
+          <span class="frax-btn__chip">
+            <span class="arrow-icon">
+              <svg viewBox="0 0 12 12" fill="none" class="arrow-icon__svg">
+                <path d="M3 1.5h7.5V9M10.5 1.5 1.5 10.5" stroke="currentColor" stroke-width="1.5"></path>
+              </svg>
+              <svg viewBox="0 0 12 12" fill="none" class="arrow-icon__svg">
+                <path d="M3 1.5h7.5V9M10.5 1.5 1.5 10.5" stroke="currentColor" stroke-width="1.5"></path>
+              </svg>
+            </span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -142,6 +191,86 @@
   <!-- Luminous Section Divider -->
   <div class="section-divider" aria-hidden="true"></div>
 
-  <!-- Reverse Hero Footer & Email Section -->
+  <!-- What We Build & Tools We Trust Section (Exact Fraxbit Process & Stack) -->
+  <section id="build" class="editorial-section build-section" aria-labelledby="how-title">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="disciplines-header-grid">
+        <div class="disciplines-header-main reveal-on-scroll">
+          <p class="section-tag-badge">
+            <span aria-hidden="true" class="tag-badge-dot"></span>
+            Capabilities &amp; Stack
+          </p>
+          <h2 id="how-title" class="disciplines-main-title">
+            From architecture to launch<span class="text-accent">.</span>
+          </h2>
+        </div>
+        <div class="disciplines-header-cta reveal-on-scroll delay-1">
+          <p class="disciplines-header-sub">
+            What we build, how we get there and the tools we trust along the way.
+          </p>
+          <a href="#contact" class="frax-btn">
+            <span class="frax-btn__label">Start a project</span>
+            <span class="frax-btn__chip">
+              <span class="arrow-icon">
+                <svg viewBox="0 0 12 12" fill="none" class="arrow-icon__svg">
+                  <path d="M3 1.5h7.5V9M10.5 1.5 1.5 10.5" stroke="currentColor" stroke-width="1.5"></path>
+                </svg>
+                <svg viewBox="0 0 12 12" fill="none" class="arrow-icon__svg">
+                  <path d="M3 1.5h7.5V9M10.5 1.5 1.5 10.5" stroke="currentColor" stroke-width="1.5"></path>
+                </svg>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Block 01: What We Build Typographic Wall -->
+      <div class="how-block">
+        <div class="sub-head reveal-on-scroll">
+          <span class="sub-head__num">01</span>
+          <h3 class="sub-head__title">What we build</h3>
+        </div>
+        <p class="build-wall reveal-on-scroll delay-1" data-highlight="true">
+          @for (item of buildItems; track item; let idx = $index; let last = $last) {
+            <span class="build-wall__item">{{ item }}</span>
+            @if (!last) {
+              <span class="build-wall__dot" aria-hidden="true"></span>
+            }
+          }
+        </p>
+      </div>
+
+      <!-- Block 02: The Tools We Trust -->
+      <div class="how-block">
+        <div class="sub-head reveal-on-scroll">
+          <span class="sub-head__num">02</span>
+          <h3 class="sub-head__title">The tools we trust</h3>
+        </div>
+        <div class="stack-list">
+          @for (group of stackGroups; track group.title; let idx = $index) {
+            <div class="stack-group reveal-on-scroll" [class]="'delay-' + ((idx % 4) + 1)">
+              <h4 class="stack-group__title">{{ group.title }}</h4>
+              <ul class="stack-group__tools">
+                @for (tool of group.tools; track tool) {
+                  <li class="tool">{{ tool }}</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luminous Section Divider -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Footer & Contact Section -->
   <app-footer></app-footer>
+
+  <!-- Floating Magnetic View Cursor (Exact Fraxbit Selected Works Experience) -->
+  <div class="work-view-cursor" id="workCursor" aria-hidden="true">
+    <span>View</span>
+  </div>
 </main>

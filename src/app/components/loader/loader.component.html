@@ -1,0 +1,9 @@
+@if (isVisible()) {
+  <div class="loader-overlay" [class.is-zooming]="isZooming()" role="status" aria-label="Loading site">
+    <div class="loader-center">
+      <div class="loader-mark-wrap">
+        <span class="loader-glyph" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+}
