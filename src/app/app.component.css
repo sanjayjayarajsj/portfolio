@@ -464,11 +464,17 @@
   .work-masonry-item.lg\:col-span-7 {
     grid-column: span 7 / span 7;
   }
+  .work-masonry-item.lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
   .work-masonry-item.lg\:col-span-4 {
     grid-column: span 4 / span 4;
   }
   .work-masonry-item.lg\:col-start-9 {
     grid-column-start: 9;
+  }
+  .work-masonry-item.lg\:col-start-8 {
+    grid-column-start: 8;
   }
   .work-masonry-item.lg\:col-start-6 {
     grid-column-start: 6;
@@ -476,8 +482,14 @@
   .work-masonry-item.lg\:mt-40 {
     margin-top: 10rem;
   }
+  .work-masonry-item.lg\:mt-32 {
+    margin-top: 8rem;
+  }
   .work-masonry-item.lg\:mt-28 {
     margin-top: 7rem;
+  }
+  .work-masonry-item.lg\:mt-24 {
+    margin-top: 6rem;
   }
 }
 
@@ -503,6 +515,22 @@
   will-change: clip-path;
 }
 
+.work-card__reveal[data-reveal="clip"]:not([data-revealed="true"]) {
+  clip-path: inset(100% 0% 0% 0%);
+}
+
+[data-reveal="fade"]:not([data-revealed="true"]) {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  will-change: opacity, transform;
+}
+
+[data-reveal="split"]:not([data-revealed="true"]) {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  will-change: opacity, transform;
+}
+
 .work-card__frame {
   position: relative;
   overflow: hidden;
@@ -515,12 +543,12 @@
 
 .work-card--landscape .work-card__frame {
   aspect-ratio: 16 / 10;
-  min-height: 260px;
+  min-height: 240px;
 }
 
 .work-card--portrait .work-card__frame {
-  aspect-ratio: 4 / 5;
-  min-height: 380px;
+  aspect-ratio: 16 / 10;
+  min-height: 240px;
 }
 
 .work-card__parallax {
@@ -539,9 +567,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 1.2s var(--ease-out-expo);
   display: block;
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .work-card:hover .work-card__img {
@@ -907,6 +937,12 @@
   .meta-details-list {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .work-card__title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
   }
 
   .work-card__services {

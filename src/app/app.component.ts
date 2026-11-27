@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, HostListener, signal, inject, PLATFORM_ID, NgZone } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, signal, inject, PLATFORM_ID, NgZone } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroComponent } from './components/hero/hero.component';
@@ -18,7 +18,7 @@ if (typeof window !== 'undefined') {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit, OnDestroy {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private platformId = inject(PLATFORM_ID);
   private ngZone = inject(NgZone);
   private scrollTicking = false;
@@ -46,9 +46,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       image: '/project-stag.png',
       url: 'https://stagg-store.vercel.app/',
       services: 'UI/UX Design · Front End Development · Tailwind CSS',
-      cardTypeClass: 'work-card--portrait',
-      aspectClass: 'aspect-[4/5]',
-      gridClass: 'lg:col-span-4 lg:col-start-9 lg:mt-40'
+      cardTypeClass: 'work-card--landscape',
+      aspectClass: 'aspect-[16/10]',
+      gridClass: 'lg:col-span-5 lg:col-start-8 lg:mt-32'
     },
     {
       index: '03',
@@ -61,7 +61,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       services: 'AC Spare Parts Catalogue · Instant Quote & Product Enquiry',
       cardTypeClass: 'work-card--landscape',
       aspectClass: 'aspect-[16/10]',
-      gridClass: 'lg:col-span-7 lg:col-start-6 lg:mt-28'
+      gridClass: 'lg:col-span-7 lg:col-start-6 lg:mt-24'
     }
   ];
 
@@ -128,17 +128,18 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   private cleanupObserver?: () => void;
   private cleanupCursor?: () => void;
+  private cleanupScroll?: () => void;
 
-  @HostListener('window:scroll', [])
-  onScroll(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
 
-    if (!this.scrollTicking) {
-      window.requestAnimationFrame(() => {
-        this.updateScrollProgress();
-        this.scrollTicking = false;
+      window.addEventListener('beforeunload', () => {
+        window.scrollTo(0, 0);
       });
-      this.scrollTicking = true;
     }
   }
 
@@ -154,7 +155,23 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+
     this.ngZone.runOutsideAngular(() => {
+      // Passive scroll progress tracking without Zone overhead
+      let scrollTicking = false;
+      const onScroll = () => {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(() => {
+            this.updateScrollProgress();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      this.cleanupScroll = () => window.removeEventListener('scroll', onScroll);
+
       // Scroll reveal observer for editorial & skill sections
       const observer = new IntersectionObserver(
         (entries) => {
@@ -190,79 +207,70 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   private initFraxbitAnimations(): void {
+    // Pre-set reveal elements hidden upfront to prevent any sudden visual blinking
+    gsap.set('[data-reveal="clip"]:not([data-revealed])', { clipPath: 'inset(100% 0% 0% 0%)' });
+    gsap.set('.work-card__img', { scale: 1.15 });
+    gsap.set('[data-reveal="fade"]:not([data-revealed])', { opacity: 0, y: 22 });
+    gsap.set('[data-reveal="split"]:not([data-revealed])', { opacity: 0, y: 32 });
+
     // 1. Stage Over: previous section container parallax push
     const stageOver = document.querySelector('[data-stage="over"]') as HTMLElement;
     if (stageOver) {
-      let prev = stageOver.previousElementSibling as HTMLElement | null;
-      while (prev && !prev.getClientRects().length) {
-        prev = prev.previousElementSibling as HTMLElement | null;
-      }
-      const prevContainer = prev?.querySelector(':scope > .container') as HTMLElement | null;
-      if (prevContainer) {
-        gsap.fromTo(
-          prevContainer,
-          { y: 0, opacity: 1 },
-          {
-            y: () => 0.18 * window.innerHeight,
-            opacity: 0.5,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: stageOver,
-              start: 'top 55%',
-              end: 'top top',
-              scrub: true,
-              invalidateOnRefresh: true
-            }
+      const skillsContainer = document.querySelector('#skills .container') as HTMLElement | null;
+      if (skillsContainer) {
+        gsap.to(skillsContainer, {
+          y: () => 0.12 * window.innerHeight,
+          opacity: 0.6,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: stageOver,
+            start: 'top 55%',
+            end: 'top top',
+            scrub: true,
+            invalidateOnRefresh: true
           }
-        );
+        });
       }
     }
 
-    // 2. Exact Fraxbit Clip Reveal on Images using ScrollTrigger.batch
+    // 2. Exact Fraxbit Clip Reveal on Images using ScrollTrigger.batch (Blink-Free)
     ScrollTrigger.batch('[data-reveal="clip"]', {
-      start: 'top 90%',
+      start: 'top 92%',
       once: true,
       onEnter: (batch) => {
         const unrevealed = (batch as HTMLElement[]).filter((el) => !el.hasAttribute('data-revealed'));
-        unrevealed.forEach((el) => el.setAttribute('data-revealed', ''));
+        unrevealed.forEach((el) => el.setAttribute('data-revealed', 'true'));
         if (!unrevealed.length) return;
 
-        gsap.fromTo(
-          unrevealed,
-          { clipPath: 'inset(100% 0% 0% 0%)' },
-          {
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.4,
-            stagger: 0.15,
-            ease: 'power4.inOut',
-            overwrite: true
-          }
-        );
+        gsap.to(unrevealed, {
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 1.3,
+          stagger: 0.15,
+          ease: 'power4.inOut',
+          overwrite: 'auto'
+        });
 
         const imgs = unrevealed.flatMap((el) => Array.from(el.querySelectorAll('.work-card__img')));
         if (imgs.length) {
-          gsap.fromTo(
-            imgs,
-            { scale: 1.25 },
-            {
-              scale: 1,
-              duration: 1.8,
-              stagger: 0.15,
-              ease: 'power3.out'
-            }
-          );
+          gsap.to(imgs, {
+            scale: 1,
+            duration: 1.6,
+            stagger: 0.15,
+            ease: 'power3.out',
+            overwrite: 'auto'
+          });
         }
       }
     });
 
-    // 3. Parallax Scrub on Images (-6% to +6%)
+    // 3. Parallax Scrub on Images (-5% to +5%)
     const parallaxElements = gsap.utils.toArray('[data-parallax="true"]') as HTMLElement[];
     parallaxElements.forEach((el) => {
       gsap.fromTo(
         el,
-        { yPercent: -6 },
+        { yPercent: -5 },
         {
-          yPercent: 6,
+          yPercent: 5,
           ease: 'none',
           scrollTrigger: {
             trigger: el.closest('.work-card') || el.parentElement,
@@ -274,43 +282,37 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       );
     });
 
-    // 4. Fade & Split Reveals
+    // 4. Fade & Split Reveals (Blink-Free)
     const fadeElements = gsap.utils.toArray('[data-reveal="fade"]') as HTMLElement[];
     fadeElements.forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 22 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            once: true
-          }
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+        overwrite: 'auto',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          once: true
         }
-      );
+      });
     });
 
     const splitElements = gsap.utils.toArray('[data-reveal="split"]') as HTMLElement[];
     splitElements.forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 35 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.1,
-          ease: 'power4.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 88%',
-            once: true
-          }
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power4.out',
+        overwrite: 'auto',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          once: true
         }
-      );
+      });
     });
 
     // 5. Highlight Wall Scrub in Capabilities
